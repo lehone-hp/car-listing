@@ -13,7 +13,7 @@ class CreateFeatureVehiclesTable extends Migration
      */
     public function up()
     {
-        Schema::create('feature_vehicles', function (Blueprint $table) {
+        Schema::create('feature_vehicle', function (Blueprint $table) {
             $table->unsignedInteger('feature_id');
             $table->unsignedInteger('vehicle_id');
         });
