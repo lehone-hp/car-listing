@@ -19,4 +19,9 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::get('/dashboard', 'Admin\AdminController@getDashboard')->name('admin.dashboard');
+
+    Route::get('/brands', 'Admin\BrandController@index')->name('admin.brands');
+
+    Route::get('/fuel-types', 'Admin\FuelTypeController@index')->name('admin.fuel-types');
+
 });

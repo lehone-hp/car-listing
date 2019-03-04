@@ -18,6 +18,8 @@
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('admin/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin/img/favicon.png') }}">
+
+    @yield('header-style')
 </head>
 
 <body>
@@ -52,7 +54,7 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="{{ route('admin.dashboard') }}" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('admin/dashboard*') ? "active" : "" }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                     <li>
                         <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-car"></i>
                             <span>Vehicles</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
@@ -63,9 +65,11 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#" class=""><i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-list"></i> <span>Fuel Types</span></a></li>
+                    <li><a href="{{ route('admin.brands') }}" class="{{ Request::is('admin/brands*') ? "active" : "" }}">
+                            <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
+                    <li><a href=""> <i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
+                    <li><a href="{{ route('admin.fuel-types') }}" class="{{ Request::is('admin/fuel-types*') ? "active" : "" }}">
+                            <i class="lnr lnr-list"></i> <span>Fuel Types</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                 </ul>
@@ -219,6 +223,7 @@
 
     });
 </script>
+@yield('footer_script')
 </body>
 
 </html>
