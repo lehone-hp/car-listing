@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
@@ -25,3 +21,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::get('/fuel-types', 'Admin\FuelTypeController@index')->name('admin.fuel-types');
 
 });
+
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('index');
+
+Route::get('/car-listing', function () {
+    return view('listing');
+})->name('listing');
+
+Route::get('/single-car', function () {
+    return view('single');
+})->name('single');
