@@ -239,7 +239,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-12">
-                    <h3>Best Car Deals For You</h3>
+                    <h3>Quality Used Cars</h3>
                     <ul class="nav nav-tabs border-0 py-3 flex-column flex-sm-row" id="myTab" role="tablist">
                         <li class="nav-item mr-sm-3 mb-3 mb-sm-0">
                             <a class="nav-link redial-light rounded active newslider" data-toggle="tab" href="#new" role="tab" aria-selected="true" aria-expanded="true">New</a>

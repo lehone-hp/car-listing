@@ -37,11 +37,12 @@
             <div id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="admin/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span>{{ Auth::user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-                            <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                            <li><a href="{{ route('admin.logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,7 +55,7 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('admin/dashboard*') ? "active" : "" }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('root/dashboard*') ? "active" : "" }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                     <li>
                         <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-car"></i>
                             <span>Vehicles</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
@@ -65,13 +66,15 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="{{ route('admin.brands') }}" class="{{ Request::is('admin/brands*') ? "active" : "" }}">
+                    <li><a href="{{ route('admin.brands') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
                             <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
                     <li><a href=""> <i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
-                    <li><a href="{{ route('admin.fuel-types') }}" class="{{ Request::is('admin/fuel-types*') ? "active" : "" }}">
+                    <li><a href="{{ route('admin.fuel-types') }}" class="{{ Request::is('root/fuel-types*') ? "active" : "" }}">
                             <i class="lnr lnr-list"></i> <span>Fuel Types</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                    <li><a href="{{ route('admin.logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+
                 </ul>
             </nav>
         </div>
@@ -82,9 +85,8 @@
         <!-- MAIN CONTENT -->
         <div class="main-content">
             <div class="container-fluid">
-
+                @include('layouts.alert-block')
                 @yield('content')
-
             </div>
         </div>
         <!-- END MAIN CONTENT -->
@@ -105,6 +107,7 @@
 <script src="{{ asset('admin/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
 <script src="{{ asset('admin/vendor/chartist/js/chartist.min.js') }}"></script>
 <script src="{{ asset('admin/scripts/klorofil-common.js') }}"></script>
+<script src="{{ asset('admin/js/main.js') }}"></script>
 <script>
     $(function() {
         var data, options;
