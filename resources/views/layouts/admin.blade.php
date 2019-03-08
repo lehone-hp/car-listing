@@ -68,7 +68,8 @@
                     </li>
                     <li><a href="{{ route('admin.brands.index') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
                             <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
-                    <li><a href=""> <i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
+                    <li><a href="{{ route('admin.car-features') }}" class="{{ Request::is('root/car-feature*') ? "active" : "" }}">
+                            <i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
                     <li><a href="{{ route('admin.fuel-types') }}" class="{{ Request::is('root/fuel-types*') ? "active" : "" }}">
                             <i class="lnr lnr-list"></i> <span>Fuel Types</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>

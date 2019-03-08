@@ -17,6 +17,7 @@ class CreateVehiclesTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug');
             $table->string('name');
+            $table->string('model')->nullable();
             $table->text('description');
             $table->float('price');
             $table->float('old_price')->nullable();

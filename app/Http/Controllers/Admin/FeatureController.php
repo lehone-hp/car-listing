@@ -9,41 +9,41 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\FuelType;
+use App\Feature;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
-class FuelTypeController extends Controller {
+class FeatureController extends Controller {
 
     public function __construct(){
         $this->middleware('auth');
     }
 
     public function index() {
-        $fuel_types = FuelType::all();
-        return view('admin.fuel_type', compact('fuel_types'));
+        $car_features = Feature::orderBy('name', 'ASC')->get();
+        return view('admin.car_features', compact('car_features'));
     }
 
     public function create(Request $request) {
         $this->validate(request(), [
-            'name' => 'string|required|unique:fuel_types',
+            'name' => 'string|required|unique:features',
         ]);
 
-        $fuel_type = new FuelType();
-        $fuel_type->name = $request->name;
-        $fuel_type->slug = Str::slug($request->name);
+        $car_feature = new Feature();
+        $car_feature->name = $request->name;
+        $car_feature->slug = Str::slug($request->name);
 
-        $fuel_type->save();
+        $car_feature->save();
         Session::flash('success', 'Fuel Type was successfully added');
         return redirect()->back();
     }
 
     public function purge(Request $request) {
-        $fuel_type = FuelType::where('slug', $request->slug)->first();
-        if ($fuel_type) {
-            $fuel_type->delete();
+        $car_feature = Feature::where('slug', $request->slug)->first();
+        if ($car_feature) {
+            $car_feature->delete();
             session()->flash('success', 'Fuel Type successfully deleted');
         } else {
             Session::flash('error', 'Sorry! fuel type does not exist');
@@ -58,12 +58,12 @@ class FuelTypeController extends Controller {
         ]);
 
 
-        $fuel_type = FuelType::where('slug', $request->edit_slug)->first();
+        $car_feature = Feature::where('slug', $request->edit_slug)->first();
 
-        if ($fuel_type) {
-            $fuel_type->name = $request->new_name;
-            $fuel_type->slug = Str::slug($request->new_name);
-            $fuel_type->save();
+        if ($car_feature) {
+            $car_feature->name = $request->new_name;
+            $car_feature->slug = Str::slug($request->new_name);
+            $car_feature->save();
             session()->flash('success', $request->new_name .' successfully edited');
         } else {
             session()->flash('error', 'Sorry! The Selected Fuel Type does not exist');
