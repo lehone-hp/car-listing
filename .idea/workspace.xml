@@ -3,28 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="79ef4813-a889-44e3-a102-ba5f94faf6e2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FuelTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FuelTypeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/NEAT-LOGO.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/NEAT-LOGO.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/admin/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/FontAwesome.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/images/logo-v1.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo-v1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/neat-co.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/neat-co.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/fuel_type.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/fuel_type.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/listing.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/alert-block.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/alert-block.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,44 +36,47 @@
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.53" value="1" />
+          <entry key="project.open.time.58" value="1" />
           <entry key="project.open.time.61" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="104" />
+          <entry key="css" value="123" />
           <entry key="env" value="8" />
-          <entry key="php" value="5381" />
+          <entry key="php" value="6931" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="8" />
-          <entry key="Blade" value="2890" />
-          <entry key="CSS" value="104" />
-          <entry key="PHP" value="2491" />
+          <entry key="Blade" value="3589" />
+          <entry key="CSS" value="123" />
+          <entry key="PHP" value="3342" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="8" />
+          <entry key="css" value="9" />
           <entry key="env" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="js" value="1" />
           <entry key="map" value="1" />
-          <entry key="php" value="78" />
-          <entry key="png" value="1" />
+          <entry key="php" value="92" />
+          <entry key="png" value="26" />
           <entry key="svg" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="1" />
-          <entry key="Blade" value="31" />
-          <entry key="CSS" value="8" />
-          <entry key="Image" value="1" />
+          <entry key="Blade" value="38" />
+          <entry key="CSS" value="9" />
+          <entry key="Image" value="26" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="47" />
+          <entry key="PHP" value="54" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="SVG" value="1" />
           <entry key="SourceMap" value="1" />
         </counts>
@@ -98,32 +90,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="28" column="75" selection-start-line="28" selection-start-column="75" selection-end-line="28" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/FuelTypeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="61" column="35" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="35" />
+            <state relative-caret-position="523">
+              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
               <folding>
-                <element signature="e#128#145#0#PHP" expanded="true" />
+                <element signature="e#46#60#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/fuel_type.blade.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/brand.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="140" column="28" selection-start-line="140" selection-start-column="28" selection-end-line="140" selection-end-column="28" />
+            <state relative-caret-position="243">
+              <caret line="136" column="61" selection-start-line="136" selection-start-column="61" selection-end-line="136" selection-end-column="61" />
+              <folding>
+                <element signature="e#4015#5429#0#HTML" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,6 +146,8 @@
       <find>/admin/dashboard</find>
       <find>/home</find>
       <find>best</find>
+      <find>admin/</find>
+      <find>admin.</find>
     </findStrings>
     <replaceStrings>
       <replace>Fuel Types</replace>
@@ -171,6 +159,7 @@
       <replace>{{ route('single') }}</replace>
       <replace>/root/dashboard</replace>
       <replace>admin/</replace>
+      <replace>root/</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -196,15 +185,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/blank.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/brand.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PageController.php" />
         <option value="$PROJECT_DIR$/public/admin/vendor/font-awesome/css/font-awesome.css" />
         <option value="$PROJECT_DIR$/resources/views/listing.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/single.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/public/admin/css/main.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/auth.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
@@ -214,10 +200,13 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/alert-block.blade.php" />
         <option value="$PROJECT_DIR$/public/admin/js/main.js" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/FuelTypeController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
+        <option value="$PROJECT_DIR$/public/admin/css/main.css" />
         <option value="$PROJECT_DIR$/resources/views/admin/fuel_type.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/brand.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" />
       </list>
     </option>
   </component>
@@ -326,7 +315,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -363,6 +351,22 @@
             <path>
               <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
               <item name="car-listing" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -370,6 +374,21 @@
               <item name="car-listing" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="main.css" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
@@ -405,6 +424,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -415,14 +435,14 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
       <recent name="$PROJECT_DIR$/public/fonts" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/resources/views/admin" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -454,18 +474,19 @@
       <workItem from="1551870231661" duration="134000" />
       <workItem from="1551871791323" duration="3881000" />
       <workItem from="1551881776675" duration="5490000" />
-      <workItem from="1551991633155" duration="681000" />
+      <workItem from="1551991633155" duration="6285000" />
+      <workItem from="1552024877517" duration="2736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24750000" />
+    <option name="totallyTimeSpent" value="33090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2810606" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28560606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -480,7 +501,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007576" side_tool="true" weight="0.23817292" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49924242" weight="0.32463294" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49924242" weight="0.31810766" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="12" weight="0.32952693" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32952693" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -496,76 +517,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_111746_create_brands_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_112019_create_features_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_113104_create_vehicle_photos_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_112108_create_vehicles_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/FeatureVehicle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Brand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/FuelType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/VehiclePhoto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Feature.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_113528_create_feature_vehicles_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -588,27 +539,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/css/main.css.map">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="sourcemapFileViewerProvider" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/dashboard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="330" column="26" lean-forward="true" selection-start-line="330" selection-start-column="26" selection-end-line="330" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/brand.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="116" column="53" selection-start-line="116" selection-start-column="53" selection-end-line="116" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -664,13 +601,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/img/logo-dark.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="1769" column="23" selection-start-line="1769" selection-start-column="23" selection-end-line="1769" selection-end-column="23" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/auth.blade.php" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php">
@@ -762,34 +692,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/admin.blade.php">
+    <entry file="file://$PROJECT_DIR$/config/filesystems.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="789">
-          <caret line="120" column="13" lean-forward="true" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="28" column="75" selection-start-line="28" selection-start-column="75" selection-end-line="28" selection-end-column="96" />
+        <state relative-caret-position="247">
+          <caret line="52" column="49" lean-forward="true" selection-start-line="52" selection-start-column="49" selection-end-line="52" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/FuelTypeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="61" column="35" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="35" />
+        <state relative-caret-position="306">
+          <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="30" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_111746_create_brands_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/admin.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/brands/brand_5c8192612da31_1551995489.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/storage/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33744">
+          <caret line="1776" column="17" selection-start-line="1776" selection-start-column="17" selection-end-line="1776" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c820b9810bca_1552026520.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c8199f94e433_1551997433.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c820c0fcedb8_1552026639.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c820cc500d15_1552026821.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c8199106cd22_1551997200.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c819875185a5_1551997045.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c819811dfcfa_1551996945.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c820d558292c_1552026965.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c819669e92f8_1551996521.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c819a26b800f_1551997478.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c819cd7a94e2_1551998167.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/public/brands/brand_5c819d384f4d2_1551998264.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/fuel_type.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="144" column="8" lean-forward="true" selection-start-line="144" selection-start-column="8" selection-end-line="148" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/brand.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="136" column="61" selection-start-line="136" selection-start-column="61" selection-end-line="136" selection-end-column="61" />
           <folding>
-            <element signature="e#128#145#0#PHP" expanded="true" />
+            <element signature="e#4015#5429#0#HTML" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/fuel_type.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="140" column="28" selection-start-line="140" selection-start-column="28" selection-end-line="140" selection-end-column="28" />
+        <state relative-caret-position="523">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+          <folding>
+            <element signature="e#46#60#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

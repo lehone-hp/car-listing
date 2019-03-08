@@ -22,7 +22,7 @@ Route::group(['prefix' => 'root', 'middleware' => ['auth']], function() {
     })->name('admin.logout');
 
     Route::get('/dashboard', 'Admin\AdminController@getDashboard')->name('admin.dashboard');
-    Route::get('/brands', 'Admin\BrandController@index')->name('admin.brands');
+    Route::resource('brands', 'Admin\BrandController', ['as' => 'admin']);
     Route::get('/fuel-types', 'Admin\FuelTypeController@index')->name('admin.fuel-types');
     Route::post('/fuel-types', 'Admin\FuelTypeController@create')->name('admin.fuel-types');
     Route::post('/fuel-type/purge', 'Admin\FuelTypeController@purge')->name('admin.fuel-types.delete');

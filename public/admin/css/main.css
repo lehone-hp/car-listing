@@ -1769,3 +1769,10 @@ ul.activity-timeline > li {
 .is-invalid {
   border: solid #F9354C 1px;
 }
+
+.brand-logo-sm img {
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

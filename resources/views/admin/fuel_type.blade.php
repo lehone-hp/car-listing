@@ -56,7 +56,7 @@
                         <div class="input-group">
                             <label>Fuel Type</label>
                             <input type="text" value="{{ old('name') }}"
-                                   name="name"
+                                   name="name" required
                                    class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}">
 
                             @if ($errors->has('name'))
@@ -91,7 +91,7 @@
                         <div class="input-group">
                             <label>Fuel Type</label>
                             <input type="text" name="new_name"
-                                   id="edit_name"
+                                   id="edit_name" required
                                    class="form-control{{ $errors->has('new_name') ? ' is-invalid' : '' }}">
 
                             @if ($errors->has('new_name'))

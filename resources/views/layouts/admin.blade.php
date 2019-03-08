@@ -66,7 +66,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="{{ route('admin.brands') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
+                    <li><a href="{{ route('admin.brands.index') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
                             <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
                     <li><a href=""> <i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
                     <li><a href="{{ route('admin.fuel-types') }}" class="{{ Request::is('root/fuel-types*') ? "active" : "" }}">

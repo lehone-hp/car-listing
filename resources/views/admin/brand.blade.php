@@ -17,26 +17,33 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Logo</th>
+                            <th class="text-center">Logo</th>
                             <th>Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="{{ asset('admin/img/logo-dark.png') }}">
-                            </td>
-                            <td>Toyota</td>
-                            <td>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#editBrandModal">Edit</button>
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteBrandModal">Delete</button>
-                            </td>
-                        </tr>
-                        <tr class="text-center">
-                            <td colspan="4">No Brands Found</td>
-                        </tr>
+                        @if ($brands->count() > 0)
+                            @foreach($brands as $brand)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td class="brand-logo-sm">
+                                        @if($brand->photo)
+                                            <img src="{{ asset("storage/".$brand->photo) }}">
+                                        @endif
+                                    </td>
+                                    <td>{{ $brand->name }}</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="editBrand('{{$brand->id}}', '{{$brand->name}}')">Edit</button>
+                                        <button class="btn btn-danger" onclick="deleteBrand('{{$brand->id}}', '{{$brand->name}}')">Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr class="text-center">
+                                <td colspan="4">No Brands Found</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
@@ -50,15 +57,30 @@
                     <h3 class="panel-title">Add New Car Brand</h3>
                 </div>
                 <div class="panel-body">
-                    <form method="POST">
+                    <form method="POST" action="{{ route('admin.brands.store') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="input-group">
                             <label>Brand Name</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                   name="name" value="{{ old('name') }}" required>
+
+                            @if ($errors->has('name'))
+                                <span class="text-danger">
+                                    {{ $errors->first('name') }}
+                                </span>
+                            @endif
                         </div>
 
                         <div class="input-group">
                             <label>Logo</label>
-                            <input type="file" class="form-control">
+                            <input type="file" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}"
+                                   name="logo">
+
+                            @if ($errors->has('logo'))
+                                <span class="text-danger">
+                                    {{ $errors->first('logo') }}
+                                </span>
+                            @endif
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block">Save</button>
@@ -78,16 +100,20 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form method="POST">
+                <form method="POST" action="" enctype="multipart/form-data" id="edit_form">
+                    @csrf
+                    @method('PUT')
                     <div class="modal-body">
                         <div class="input-group">
                             <label>Brand Name</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="name" id="edit_name"
+                                   class="form-control" required>
                         </div>
 
                         <div class="input-group">
                             <label>Logo</label>
-                            <input type="file" class="form-control">
+                            <input type="file" name="logo"
+                                   class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -103,15 +129,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Permanently Delete <strong>Toyota</strong>?</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Permanently Delete <strong id="delete_name">Toyota</strong>?</h3>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form method="POST">
-                        @csrf
-                        <input type="hidden" name="brand_id"
-                               id="remove_brand_id" value="">
+                <form method="POST" action="" id="delete_form">
+                    @csrf
+                    @method('DELETE')
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <button class="btn btn-danger"  type="submit" href="#">Delete</button>
@@ -121,4 +146,20 @@
         </div>
     </div>
 
+@endsection
+
+@section('footer_script')
+<script>
+    function deleteBrand(brand_id, brand_name) {
+        $('#delete_name').html(brand_name);
+        $('#delete_form').attr('action', 'brands/'+brand_id);
+        $('#deleteBrandModal').modal('show');
+    }
+
+    function editBrand(brand_id, brand_name) {
+        $('#editBrandModal').modal('show');
+        $('#edit_form').attr('action', 'brands/'+brand_id);
+        $('#edit_name').val(brand_name);
+    }
+</script>
 @endsection

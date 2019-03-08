@@ -1,24 +1,92 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lehone
- * Date: 3/4/19
- * Time: 1:14 PM
- */
 
 namespace App\Http\Controllers\Admin;
 
-
+use App\Brand;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
-class BrandController extends Controller {
-
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
+class BrandController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index() {
-        return view('admin.brand');
+        $brands = Brand::all();
+        return view('admin.brand', compact('brands'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request) {
+        $this->validate(request(), [
+            'name' => 'string|required|unique:brands',
+            'logo' => 'image'
+        ]);
+
+        $brand = new Brand();
+        $brand->name = $request->name;
+        $brand->slug = Str::slug($request->name);
+
+        if ($request->logo) {
+            $file = $request->file('logo');
+            $path = $file->storeAs('public/brands', 'brand_'. uniqid() .'_'. time() .'.'.$file->getClientOriginalExtension());
+            $brand->photo = str_replace('public/', "", $path);
+        }
+
+        $brand->save();
+        session()->flash('success', 'Car Brand successfully added');
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $brand = Brand::findOrFail($id);
+        $brand->name = $request->name;
+        $brand->slug = Str::slug($request->name);
+
+        if ($request->logo) {
+            $path = storage_path('app/public/');
+            File::delete($path.'/'.$brand->photo);
+            $file = $request->file('logo');
+            $path = $file->storeAs('public/brands', 'brand_' . uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension());
+            $brand->photo = str_replace('public/', "", $path);
+        }
+        $brand->save();
+
+        session()->flash('success', $request->name .' updated successfully');
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $brand = Brand::findOrFail($id);
+        $name = $brand->name;
+
+        $brand->delete();
+        session()->flash('success', $name.' deleted successfully');
+        return redirect()->back();
+    }
 }
