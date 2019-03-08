@@ -111,8 +111,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4"
-     inkscape:cx="169.32717"
-     inkscape:cy="345.42429"
+     inkscape:cx="170.32717"
+     inkscape:cy="315.42429"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -464,7 +464,11 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.97978139px;font-family:'Abyssinica SIL';-inkscape-font-specification:'Abyssinica SIL, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ee5624;fill-opacity:1;stroke:none;stroke-width:0.12415757;stroke-opacity:1">T</tspan></text>
     <g
        id="g991"
-       transform="matrix(0.39884685,0,0,0.216016,16.634607,169.54326)">
+       transform="matrix(0.41052137,0,0,0.42788122,16.340827,123.73856)"
+       style="opacity:0.95999995"
+       inkscape:export-filename="/home/lehone/Desktop/logo-dark.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
       <g
          id="g974">
         <g
@@ -590,18 +594,18 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.64851308px;line-height:1.25;font-family:'Abyssinica SIL';-inkscape-font-specification:'Abyssinica SIL, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ee5624;fill-opacity:1;stroke:none;stroke-width:0.11035472"
-       x="29.835741"
-       y="291.21686"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.78168702px;line-height:1.25;font-family:'Abyssinica SIL';-inkscape-font-specification:'Abyssinica SIL, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.95999995;fill:#ee5624;fill-opacity:1;stroke:none;stroke-width:0.1575703"
+       x="40.137062"
+       y="207.89772"
        id="text1070-7-2-2"
-       transform="scale(1.3599519,0.73532014)"
-       inkscape:export-filename="/home/lehone/Desktop/favicon.png"
+       transform="scale(0.98032413,1.0200708)"
+       inkscape:export-filename="/home/lehone/Desktop/logo-dark.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan1068-0-7-6"
-         x="29.835741"
-         y="291.21686"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.64851308px;font-family:'Abyssinica SIL';-inkscape-font-specification:'Abyssinica SIL, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ee5624;fill-opacity:1;stroke-width:0.11035472">NEAT CO LTD</tspan></text>
+         x="40.137062"
+         y="207.89772"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.78168702px;font-family:'Abyssinica SIL';-inkscape-font-specification:'Abyssinica SIL, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ee5624;fill-opacity:1;stroke-width:0.1575703">NEAT CO LTD</tspan></text>
   </g>
 </svg>
