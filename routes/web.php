@@ -24,6 +24,11 @@ Route::group(['prefix' => 'root', 'middleware' => ['auth']], function() {
     Route::get('/dashboard', 'Admin\AdminController@getDashboard')->name('admin.dashboard');
 
     /*=========================================
+     Vehicle
+    =========================================*/
+    Route::resource('vehicles', 'Admin\VehicleController', ['as' => 'admin']);
+
+    /*=========================================
       Car Brand
     =========================================*/
     Route::resource('brands', 'Admin\BrandController', ['as' => 'admin']);

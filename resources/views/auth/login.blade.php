@@ -80,7 +80,7 @@
                 <div class="right">
                     <div class="overlay"></div>
                     <div class="content text">
-                        <h1 class="heading">Company Name Administrator Login</h1>
+                        <h1 class="heading">NEAT CO LTD Administrator Login</h1>
                         <p>Welcome</p>
                     </div>
                 </div>

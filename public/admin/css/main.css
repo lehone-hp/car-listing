@@ -1776,3 +1776,21 @@ ul.activity-timeline > li {
   margin-right: auto;
   display: block;
 }
+
+label em {
+  color: #F9354C;
+}
+
+.form-group span.notes {
+  color: #0af;
+  font-size: 13px;
+}
+
+.col-checkbox {
+  margin-top: 31px;
+}
+
+.img-100 {
+  width: 140px;
+  height: 140px;
+}

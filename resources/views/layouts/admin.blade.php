@@ -57,12 +57,14 @@
                 <ul class="nav">
                     <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('root/dashboard*') ? "active" : "" }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                     <li>
-                        <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-car"></i>
+                        <a href="#subPages" data-toggle="collapse"
+                           class="{{ Request::is('root/vehicles*') ? "active" : "" }}">
+                            <i class="lnr lnr-car"></i>
                             <span>Vehicles</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
                                 <li><a href="#" class="">View All Vehicles</a></li>
-                                <li><a href="#" class="">Upload New Vehicle</a></li>
+                                <li><a href="{{ route('admin.vehicles.create') }}" class="{{ Request::is('root/vehicles*') ? "active" : "" }}">Upload New Vehicle</a></li>
                             </ul>
                         </div>
                     </li>

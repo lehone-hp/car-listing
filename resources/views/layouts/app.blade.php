@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Company Name</title>
+    <title>NEAT CO LTD</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.ico">
@@ -155,7 +155,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8 text-lg-left text-center mb-3 mb-lg-0">
-                <span class="copyright">Copyright &copy; 2017-2018 Powered By <a href="#">Company Name.</a>  All Rights Reserved.</span>
+                <span class="copyright">Copyright &copy; 2017-2018 Powered By <a href="#">NEAT CO LTD.</a>  All Rights Reserved.</span>
             </div>
             <div class="col-12 col-lg-4 text-lg-right text-center">
                 <ul class="list-inline footer-social mb-0">

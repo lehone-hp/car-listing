@@ -19,7 +19,7 @@ class CreateVehiclesTable extends Migration
             $table->string('name');
             $table->string('model')->nullable();
             $table->text('description');
-            $table->float('price');
+            $table->float('price')->nullable();
             $table->float('old_price')->nullable();
             $table->boolean('featured')->default(false);
             $table->string('make_year')->nullable();
@@ -29,7 +29,7 @@ class CreateVehiclesTable extends Migration
             $table->string('engine_type')->nullable();
             $table->string('engine_displacement')->nullable();
             $table->float('fuel_tank_capacity')->nullable();
-            $table->float('mileage')->nullable();
+            $table->float('driven')->nullable();
             $table->integer('door_count')->nullable();
             $table->integer('cylinder_count')->nullable();
             $table->integer('gear_count')->nullable();
