@@ -1786,6 +1786,10 @@ label em {
   font-size: 13px;
 }
 
+.form-group span.text-danger {
+  font-size: 13px;
+}
+
 .col-checkbox {
   margin-top: 31px;
 }

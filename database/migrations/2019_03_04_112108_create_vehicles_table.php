@@ -19,8 +19,8 @@ class CreateVehiclesTable extends Migration
             $table->string('name');
             $table->string('model')->nullable();
             $table->text('description');
-            $table->float('price')->nullable();
-            $table->float('old_price')->nullable();
+            $table->float('price', 20, 2)->nullable();
+            $table->float('old_price', 20, 2)->nullable();
             $table->boolean('featured')->default(false);
             $table->string('make_year')->nullable();
             $table->enum('condition', ['new', 'used'])->default('used');
@@ -35,7 +35,7 @@ class CreateVehiclesTable extends Migration
             $table->integer('gear_count')->nullable();
             $table->integer('seat_count')->nullable();
             $table->unsignedInteger('brand_id');
-            $table->unsignedInteger('vehicle_photo_id');    // main photo
+            $table->unsignedInteger('vehicle_photo_id')->nullable();    // main photo
             $table->unsignedInteger('fuel_type_id');
             $table->timestamps();
         });

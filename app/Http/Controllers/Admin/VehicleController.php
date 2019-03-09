@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Feature;
+use App\FeatureVehicle;
+use App\Vehicle;
+use App\VehiclePhoto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class VehicleController extends Controller
 {
@@ -35,9 +40,79 @@ class VehicleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $this->validate(request(), [
+            'name' => 'required|string',
+            'brand' => 'required',
+            'model' => 'required',
+            'price' => 'numeric|nullable',
+            'old_price' => 'numeric|nullable',
+            'description' => 'required|string|min:50',
+            'condition' => 'required',
+            'transmission' => 'required',
+            'year' => 'required|integer',
+            'fuel_type' => 'required',
+            'number_of_doors' => 'integer|nullable|min:0',
+            'number_of_gears' => 'integer|nullable|min:0',
+            'number_of_seats' => 'integer|nullable|min:0',
+            'number_of_cylinders' => 'integer|nullable|min:0',
+            'engine_type' => 'string|nullable',
+            'engine_displacement' => 'integer|nullable',
+            'color' => 'nullable',
+            'driven' => 'numeric|nullable',
+            'tank_capacity' => 'numeric|nullable|min:0',
+            'pictures' => 'nullable',
+            'pictures.*' => 'image|max:2048'
+        ]);
+        
+        $vehicle = new Vehicle();
+        $vehicle->name = $request->name;
+        $vehicle->slug = Str::slug($request->name).'-'.time();
+        $vehicle->model = $request->model;
+        $vehicle->description = $request->description;
+        $vehicle->price = $request->price;
+        $vehicle->old_price = $request->old_price;
+        if ($request->featured) {
+            $vehicle->featured = true;
+        }
+        $vehicle->make_year = $request->year;
+        $vehicle->condition = $request->condition;
+        $vehicle->transmission = $request->transmission;
+        $vehicle->color = $request->color;
+        $vehicle->engine_type = $request->engine_type;
+        $vehicle->engine_displacement = $request->engine_displacement;
+        $vehicle->fuel_tank_capacity = $request->tank_capacity;
+        $vehicle->driven = $request->driven;
+        $vehicle->door_count = $request->number_of_doors;
+        $vehicle->cylinder_count = $request->number_of_cylinders;
+        $vehicle->gear_count = $request->number_of_gears;
+        $vehicle->seat_count = $request->number_of_seats;
+        $vehicle->brand_id = $request->brand;
+        $vehicle->fuel_type_id = $request->fuel_type;
+        $vehicle->save();
+
+        foreach (Feature::all() as $feature) {
+            if ($request->has('feature_'.$feature->id)) {
+                $feature_vehicle = new FeatureVehicle();
+                $feature_vehicle->feature_id = $feature->id;
+                $feature_vehicle->vehicle_id = $vehicle->id;
+                $feature_vehicle->save();
+            }
+        }
+
+        if ($request->has('pictures')) {
+            foreach ($request->file('pictures') as $picture) {
+                $path = $picture->storeAs('public/vehicles', 'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension());
+
+                $vehicle_photo = new VehiclePhoto();
+                $vehicle_photo->vehicle_id = $vehicle->id;
+                $vehicle_photo->photo = str_replace('public/', "", $path);
+                $vehicle_photo->save();
+            }
+        }
+
+        session()->flash('success', $request->name.' successfully uploaded');
+        return redirect()->back();
     }
 
     /**
