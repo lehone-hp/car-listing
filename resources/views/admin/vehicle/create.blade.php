@@ -86,8 +86,10 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label class="col-checkbox">
-                            <input type="checkbox" name="featured" {{ old('featured') ? 'checked' : '' }}>
-                            <span>Feature Car</span>
+                            <input type="checkbox"
+                                   class="cursor-pointer"
+                                   name="featured" {{ old('featured') ? 'checked' : '' }}>
+                            <span class="cursor-pointer">Feature Car</span>
                         </label><br>
 
                         @if ($errors->has('featured'))
@@ -127,8 +129,12 @@
                     <input type="file" name="pictures[]"
                            multiple accept="image/*" id="vehicle_images">
                 </div>
-                <div class="row" id="vehicle_images_preview">
+                @if ($errors->has('pictures'))
+                    <span class="text-danger">
+                        {{ $errors->first('pictures') }}</span>
+                @endif
 
+                <div class="row" id="vehicle_images_preview">
                 </div>
             </div>
         </div>
@@ -340,9 +346,10 @@
                 <div class="row">
                     @foreach(\App\Feature::orderBy('name', 'ASC')->get() as $feature)
                         <div class="form-group col-sm-3">
-                            <label>
+                            <label class="cursor-pointer">
                                 <input type="checkbox" name="{{ 'feature_'.$feature->id }}"
-                                    {{ old('feature_'.$feature->id) ? 'checked' : '' }}>
+                                        {{ old('feature_'.$feature->id) ? 'checked' : '' }}
+                                        class="cursor-pointer">
                                 <span>{{ $feature->name }}</span>
                             </label>
                         </div>
@@ -351,7 +358,11 @@
             </div>
         </div>
 
-        <button class="btn btn-primary btn-block btn-lg">Upload New Vehicle</button>
+        <div class="row mb-3">
+            <div class="col-sm-12 col-md-12">
+                <button class="btn btn-primary btn-block btn-lg">Upload New Vehicle</button>
+            </div>
+        </div>
 
     </form>
 @endsection

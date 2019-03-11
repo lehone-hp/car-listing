@@ -48,6 +48,14 @@ Route::group(['prefix' => 'root', 'middleware' => ['auth']], function() {
     Route::post('/car-features', 'Admin\FeatureController@create')->name('admin.car-features');
     Route::post('/car-feature/purge', 'Admin\FeatureController@purge')->name('admin.car-features.delete');
     Route::post('/car-feature/edit', 'Admin\FeatureController@edit')->name('admin.car-features.edit');
+
+    /*=========================================
+     User account routes: view, edit profile and change password
+    =========================================*/
+    Route::get('/user-profile', 'Admin\UserProfileController@index')->name('admin.user-profile');
+    Route::post('/user-profile', 'Admin\UserProfileController@editProfile')->name('admin.user-profile');
+    Route::post('/user-profile/change-password', 'Admin\UserProfileController@changePassword')->name('admin.user-profile.password');
+
 });
 
 Route::get('/', function () {

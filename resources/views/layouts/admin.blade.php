@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard | Car Listing</title>
+    <title>@yield('title') | NEAT CO LTD Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -63,7 +63,7 @@
                             <span>Vehicles</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
-                                <li><a href="#" class="">View All Vehicles</a></li>
+                                <li><a href="{{ route('admin.vehicles.index') }}" class="">View All Vehicles</a></li>
                                 <li><a href="{{ route('admin.vehicles.create') }}" class="{{ Request::is('root/vehicles*') ? "active" : "" }}">Upload New Vehicle</a></li>
                             </ul>
                         </div>
@@ -74,7 +74,8 @@
                             <i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
                     <li><a href="{{ route('admin.fuel-types') }}" class="{{ Request::is('root/fuel-types*') ? "active" : "" }}">
                             <i class="lnr lnr-list"></i> <span>Fuel Types</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                    <li><a href="{{ route('admin.user-profile') }}" class="{{ Request::is('root/user-profile*') ? "active" : "" }}">
+                            <i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                     <li><a href="{{ route('admin.logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 
@@ -98,7 +99,7 @@
     <div class="clearfix"></div>
     <footer>
         <div class="container-fluid">
-            <p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+            <p class="copyright">&copy; 2019 <a href="{{ route('admin.dashboard') }}">NEAT CO LTD - Administrator</a>. All Rights Reserved.</p>
         </div>
     </footer>
 </div>

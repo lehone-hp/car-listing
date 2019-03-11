@@ -17,9 +17,9 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-
+    public function index() {
+        $vehicles = Vehicle::orderBy('created_at', 'ASC')->paginate(20);
+        return view('admin.vehicle.index', compact('vehicles'));
     }
 
     /**
@@ -61,7 +61,7 @@ class VehicleController extends Controller
             'color' => 'nullable',
             'driven' => 'numeric|nullable',
             'tank_capacity' => 'numeric|nullable|min:0',
-            'pictures' => 'nullable',
+            'pictures' => 'required',
             'pictures.*' => 'image|max:2048'
         ]);
         
@@ -100,7 +100,9 @@ class VehicleController extends Controller
             }
         }
 
+
         if ($request->has('pictures')) {
+            $index = 0;
             foreach ($request->file('pictures') as $picture) {
                 $path = $picture->storeAs('public/vehicles', 'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension());
 
@@ -108,6 +110,12 @@ class VehicleController extends Controller
                 $vehicle_photo->vehicle_id = $vehicle->id;
                 $vehicle_photo->photo = str_replace('public/', "", $path);
                 $vehicle_photo->save();
+
+                if ($index === 0) {
+                    $vehicle->vehicle_photo_id = $vehicle_photo->id;
+                    $vehicle->save();
+                }
+                $index++;
             }
         }
 
@@ -121,9 +129,10 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id) {
+
+        $vehicle = Vehicle::where('slug', $id)->first();
+        return view('admin.vehicle.show', compact('vehicle'));
     }
 
     /**
