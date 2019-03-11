@@ -130,7 +130,6 @@ class VehicleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-
         $vehicle = Vehicle::where('slug', $id)->first();
         return view('admin.vehicle.show', compact('vehicle'));
     }
@@ -143,7 +142,12 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehicle = Vehicle::where('slug', $id)->first();
+        $conditions = config('constants.car_conditions');
+        $transmissions = config('constants.transmissions');
+        $colors = config('constants.colors');
+
+        return view('admin.vehicle.edit', compact('vehicle', 'conditions', 'transmissions', 'colors'));
     }
 
     /**
@@ -153,9 +157,71 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $vehicle = Vehicle::where('slug', $id)->first();
+        if (!$vehicle) {
+            session()->flash('error', 'Sorry, the vehicle no longer exist');
+        }
+
+        $this->validate(request(), [
+            'name' => 'required|string',
+            'brand' => 'required',
+            'model' => 'required',
+            'price' => 'numeric|nullable',
+            'old_price' => 'numeric|nullable',
+            'description' => 'required|string|min:50',
+            'condition' => 'required',
+            'transmission' => 'required',
+            'year' => 'required|integer',
+            'fuel_type' => 'required',
+            'number_of_doors' => 'integer|nullable|min:0',
+            'number_of_gears' => 'integer|nullable|min:0',
+            'number_of_seats' => 'integer|nullable|min:0',
+            'number_of_cylinders' => 'integer|nullable|min:0',
+            'engine_type' => 'string|nullable',
+            'engine_displacement' => 'integer|nullable',
+            'color' => 'nullable',
+            'driven' => 'numeric|nullable',
+            'tank_capacity' => 'numeric|nullable|min:0'
+        ]);
+
+        $vehicle->name = $request->name;
+        $vehicle->model = $request->model;
+        $vehicle->description = $request->description;
+        $vehicle->price = $request->price;
+        $vehicle->old_price = $request->old_price;
+        if ($request->featured) {
+            $vehicle->featured = true;
+        } else {
+            $vehicle->featured = false;
+        }
+        $vehicle->make_year = $request->year;
+        $vehicle->condition = $request->condition;
+        $vehicle->transmission = $request->transmission;
+        $vehicle->color = $request->color;
+        $vehicle->engine_type = $request->engine_type;
+        $vehicle->engine_displacement = $request->engine_displacement;
+        $vehicle->fuel_tank_capacity = $request->tank_capacity;
+        $vehicle->driven = $request->driven;
+        $vehicle->door_count = $request->number_of_doors;
+        $vehicle->cylinder_count = $request->number_of_cylinders;
+        $vehicle->gear_count = $request->number_of_gears;
+        $vehicle->seat_count = $request->number_of_seats;
+        $vehicle->brand_id = $request->brand;
+        $vehicle->fuel_type_id = $request->fuel_type;
+        $vehicle->save();
+
+        foreach (Feature::all() as $feature) {
+            if ($request->has('feature_'.$feature->id)) {
+                $feature_vehicle = new FeatureVehicle();
+                $feature_vehicle->feature_id = $feature->id;
+                $feature_vehicle->vehicle_id = $vehicle->id;
+                $feature_vehicle->save();
+            }
+        }
+
+        session()->flash('success', $request->name.' successfully updated');
+        return redirect()->back();
     }
 
     /**

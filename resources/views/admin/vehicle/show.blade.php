@@ -131,7 +131,7 @@
                     <div class="panel-body">
                         <h3 class="mt-0">{{ $vehicle->name }}</h3>
                         <h4><span>Price:</span> {{ $vehicle->price ? 'XAF '.number_format($vehicle->price, 2) : 'NEGOTIABLE'}} </h4>
-                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('admin.vehicles.edit', ['id'=>$vehicle->slug]) }}" class="btn btn-primary">Edit</a>
                         <button class="btn btn-danger">Delete</button>
                         <hr>
 

@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79ef4813-a889-44e3-a102-ba5f94faf6e2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/lehone.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/lehone.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/4runn3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/img/4runn3.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/logo-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/img/logo-dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/no-photo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/img/no-photo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/img/rav41.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/img/rav41.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo-v1.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo-v1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/vehicle/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vehicle/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/VehicleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/VehicleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/vehicle/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vehicle/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/vehicle/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/vehicle/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,17 +37,17 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="565" />
+          <entry key="css" value="569" />
           <entry key="env" value="8" />
-          <entry key="php" value="17786" />
+          <entry key="php" value="18554" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="8" />
-          <entry key="Blade" value="12092" />
-          <entry key="CSS" value="565" />
-          <entry key="PHP" value="5694" />
+          <entry key="Blade" value="12715" />
+          <entry key="CSS" value="569" />
+          <entry key="PHP" value="5839" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -68,7 +60,7 @@
           <entry key="jpg" value="2" />
           <entry key="js" value="1" />
           <entry key="map" value="1" />
-          <entry key="php" value="153" />
+          <entry key="php" value="158" />
           <entry key="png" value="39" />
           <entry key="svg" value="1" />
         </counts>
@@ -76,11 +68,11 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="1" />
-          <entry key="Blade" value="67" />
+          <entry key="Blade" value="70" />
           <entry key="CSS" value="21" />
           <entry key="Image" value="45" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="86" />
+          <entry key="PHP" value="88" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SVG" value="1" />
           <entry key="SourceMap" value="1" />
@@ -95,24 +87,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/vehicle/show.blade.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/VehicleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="149" column="65" selection-start-line="149" selection-start-column="65" selection-end-line="149" selection-end-column="65" />
+            <state relative-caret-position="206">
+              <caret line="222" column="34" lean-forward="true" selection-start-line="222" selection-start-column="34" selection-end-line="222" selection-end-column="34" />
               <folding>
-                <element signature="e#2236#2417#0#HTML" />
-                <element signature="e#3310#3340#0#HTML" expanded="true" />
+                <element signature="e#46#62#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/admin/css/main.css">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/vehicle/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="1803" column="13" selection-start-line="1803" selection-start-column="13" selection-end-line="1803" selection-end-column="13" />
+            <state relative-caret-position="209">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -228,14 +219,15 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UserProfileController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/user-profile.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/VehicleController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/vehicle/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Vehicle.php" />
         <option value="$PROJECT_DIR$/public/admin/css/animate.css" />
         <option value="$PROJECT_DIR$/resources/views/admin/vehicle/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/vehicle/show.blade.php" />
         <option value="$PROJECT_DIR$/public/admin/css/main.css" />
+        <option value="$PROJECT_DIR$/resources/views/admin/vehicle/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/vehicle/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/VehicleController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/vehicle/edit.blade.php" />
       </list>
     </option>
   </component>
@@ -381,42 +373,7 @@
             <path>
               <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
               <item name="car-listing" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="main.css" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="car-listing" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="car-listing" type="b2602c69:ProjectViewProjectNode" />
@@ -471,9 +428,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin/vehicle" />
       <recent name="$PROJECT_DIR$/resources/views/admin" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
-      <recent name="$PROJECT_DIR$/resources/views/admin/vehicle" />
       <recent name="$PROJECT_DIR$/public/admin/img" />
       <recent name="$PROJECT_DIR$/public/fonts" />
     </key>
@@ -522,18 +479,18 @@
       <workItem from="1552159808852" duration="886000" />
       <workItem from="1552218878582" duration="7481000" />
       <workItem from="1552301639160" duration="234000" />
-      <workItem from="1552326979862" duration="10143000" />
+      <workItem from="1552326979862" duration="13022000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79668000" />
+    <option name="totallyTimeSpent" value="82547000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3189394" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3189394" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -564,9 +521,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/storage/app/brands/brand_5c8192612da31_1551995489.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/storage/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -735,23 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/vehicle/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/VehicleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="135" column="5" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
-          <folding>
-            <element signature="e#46#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/vendor/owlcarousel/ajax-loader.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -786,21 +723,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/vehicle/show.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/admin/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="149" column="65" selection-start-line="149" selection-start-column="65" selection-end-line="149" selection-end-column="65" />
-          <folding>
-            <element signature="e#2236#2417#0#HTML" />
-            <element signature="e#3310#3340#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="295">
+          <caret line="1804" column="1" lean-forward="true" selection-start-line="1804" selection-start-column="1" selection-end-line="1804" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/css/main.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/vehicle/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="1803" column="13" selection-start-line="1803" selection-start-column="13" selection-end-line="1803" selection-end-column="13" />
+        <state relative-caret-position="95">
+          <caret line="11" column="22" selection-start-line="11" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/vehicle/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="322" column="56" selection-start-line="322" selection-start-column="56" selection-end-line="322" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/vehicle/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/VehicleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="222" column="34" lean-forward="true" selection-start-line="222" selection-start-column="34" selection-end-line="222" selection-end-column="34" />
+          <folding>
+            <element signature="e#46#62#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
