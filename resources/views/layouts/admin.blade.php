@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="{{ asset('admin/vendor/chartist/css/chartist-custom.css') }}">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
+
+    @yield('header-style')
+
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('admin/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin/img/favicon.png') }}">
-
-    @yield('header-style')
 </head>
 
 <body>
@@ -56,18 +57,10 @@
             <nav>
                 <ul class="nav">
                     <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('root/dashboard*') ? "active" : "" }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-                    <li>
-                        <a href="#subPages" data-toggle="collapse"
-                           class="{{ Request::is('root/vehicles*') ? "active" : "" }}">
-                            <i class="lnr lnr-car"></i>
-                            <span>Vehicles</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                        <div id="subPages" class="collapse ">
-                            <ul class="nav">
-                                <li><a href="{{ route('admin.vehicles.index') }}" class="">View All Vehicles</a></li>
-                                <li><a href="{{ route('admin.vehicles.create') }}" class="{{ Request::is('root/vehicles*') ? "active" : "" }}">Upload New Vehicle</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li><a href="{{ route('admin.vehicles.index') }}" class="{{ Request::is('root/vehicles') ? "active" : "" }}">
+                            <i class="lnr lnr-car"></i>View All Vehicles</a></li>
+                    <li><a href="{{ route('admin.vehicles.create') }}" class="{{ Request::is('root/vehicles/*') ? "active" : "" }}">
+                            <i class="lnr lnr-car"></i>Upload New Vehicle</a></li>
                     <li><a href="{{ route('admin.brands.index') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
                             <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
                     <li><a href="{{ route('admin.car-features') }}" class="{{ Request::is('root/car-feature*') ? "active" : "" }}">

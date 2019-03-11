@@ -1801,14 +1801,16 @@ label em {
 
 .vehicle-list .panel-body img {
   width: 100%;
-  height: 206px;
+  height: 180px;
 }
 
-.vehicle-list .panel-footer h4 span {
+.vehicle-list .panel-footer h4 span,
+.vehicle-show .panel-body h4 span {
   font-size: 15px;
   color: #7c7f82;
 }
-.vehicle-list .panel-footer h4 {
+.vehicle-list .panel-footer h4,
+.vehicle-show .panel-body h4 {
   color: #F9354C;
 }
 .vehicle-list .panel-footer .car-name {
@@ -1825,6 +1827,25 @@ label em {
     margin-bottom: 1em;
 }
 
+.mt-0 {
+    margin-top: 0px;
+}
+
 .cursor-pointer {
     cursor: pointer;
+}
+
+.photo-carousel {
+  padding: 7px;
+}
+
+.photo-carousel img {
+  height: 140px;
+}
+
+.color-badge {
+    width: 50px;
+    height: 20px;
+    display: block;
+    border: solid 1px black;
 }

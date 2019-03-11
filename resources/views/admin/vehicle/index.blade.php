@@ -21,7 +21,7 @@
                         <div class="panel-footer">
                             <h4 class="car-name">
                                 <a href="{{ route('admin.vehicles.show', ['id'=>$vehicle->slug]) }}">{{ $vehicle->name }}</a></h4>
-                            <h4><span>Price:</span> {{ $vehicle->price ? 'XAF '.$vehicle->price : 'NEGOTIABLE'}} </h4>
+                            <h4><span>Price:</span> {{ $vehicle->price ? 'XAF '.number_format($vehicle->price, 2) : 'NEGOTIABLE'}} </h4>
                         </div>
                     </div>
                     <!-- END PANEL WITH FOOTER -->
