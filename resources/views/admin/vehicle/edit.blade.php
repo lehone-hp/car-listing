@@ -6,17 +6,58 @@
 @section('content')
     <h3 class="page-title">{{ $vehicle ? 'Edit Vehicle: '.$vehicle->name : 'Vehicle Not Found' }}</h3>
 
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Change Photos of Vehicle</h3>
+        </div>
+        <div class="panel-body">
+            <label>Below is a list of photos have have been uploaded for this vehicle</label>
+            @if($vehicle->photos->count() > 0)
+                    <div class="owl-carousel owl-theme">
+                        @foreach($vehicle->photos as $photo)
+                            <div class="photo-carousel">
+                                <img class="img-100 img-thumbnail" src="{{ asset('storage/'.$photo->photo) }}">
+                                <a href="{{ route('admin.vehicle-photo.remove', ['photo_id'=>$photo->id]) }}"
+                                   class="btn btn-danger btn-block btn-sm">Remove Photo</a>
+                            </div>
+                        @endforeach
+                    </div>
+            @else
+                <h4 class="mt-0">No photos have been uploaded for this vehicle</h4>
+            @endif
+            <hr>
+            <form method="POST" enctype="multipart/form-data"
+                  action="{{ route('admin.vehicle-photo.add', ['vehicle_slug'=>$vehicle->slug]) }}">
+                @csrf
+                <div class="form-group">
+                    <label>Add new photos</label>
+                    <input type="file" name="pictures[]"
+                           multiple accept="image/*" id="vehicle_images">
+                </div>
+                @if ($errors->has('pictures'))
+                    <span class="text-danger">
+                        {{ $errors->first('pictures') }}</span>
+                @endif
+
+                <div class="row" id="vehicle_images_preview">
+                </div>
+                <br>
+                <button type="submit" id="uploadSubmitBtn" class="btn btn-primary"> Upload Photos </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Content -->
     <form method="POST" action="{{ route('admin.vehicles.update', ['id'=>$vehicle->slug]) }}">
     @csrf
-        @method('PUT')
+    @method('PUT')
 
     <!--====================================
          Primary Vehicle Details
          =========================================-->
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Primary Vehicle Details</h3>
+                <h3 class="panel-title">Edit Primary Vehicle Details</h3>
             </div>
             <div class="panel-body">
                 <!-- Vehicle Name, Brand and Model -->
@@ -128,7 +169,7 @@
          =========================================-->
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Technical Details</h3>
+                <h3 class="panel-title">Edit Technical Details</h3>
             </div>
             <div class="panel-body">
                 <!-- Condition, Make Year, Transmission and Fuel Type -->
@@ -324,7 +365,7 @@
          =========================================-->
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Vehicle Features</h3>
+                <h3 class="panel-title">Edit Vehicle Features</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -350,4 +391,34 @@
 
     </form>
 
+@endsection
+
+@section('footer_script')
+    <script>
+
+        $(function () {
+            $('#uploadSubmitBtn').hide();
+            $('#vehicle_images').on('change', function () {
+                var images = this.files;
+
+                if (images.length > 0) {
+                    $('#uploadSubmitBtn').show();
+                } else {
+                    $('#uploadSubmitBtn').hide();
+                }
+
+                $('#vehicle_images_preview').html('');
+                for (i = 0; i < images.length; i++) {
+                    var file = images[i];
+                    var reader = new FileReader();
+                    reader.addEventListener("load", function (event) {
+                        var img = '<div class="col-sm-2 col-xs-3"><img class="img-100" id="img'+i+'" src="'+event.target.result+'"></div>';
+                        $('#vehicle_images_preview').append(img);
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+
+        });
+    </script>
 @endsection

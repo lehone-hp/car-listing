@@ -4,8 +4,6 @@
 @endsection
 
 @section('header-style')
-    <link rel="stylesheet" href="{{ asset('admin/vendor/owlcarousel/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/vendor/owlcarousel/owl.theme.default.min.css') }}">
 @endsection
 
 @section('content')
@@ -173,26 +171,5 @@
 @endsection
 
 @section('footer_script')
-    <script src="{{ asset('admin/vendor/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $(".owl-carousel").owlCarousel({
-                loop: true,
-                items: 1,
-                autoplay:true,
-                autoplayTimeout:3500,
-                autoplaySpeed:1500,
-                autoplayHoverPause:true,
-                nav:true,
-                responsive:{
-                    0:{
-                        items:1
-                    },
-                    600:{
-                        items:3
-                    }
-                }
-            });
-        });
-    </script>
+
 @endsection()

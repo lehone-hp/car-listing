@@ -27,6 +27,8 @@ Route::group(['prefix' => 'root', 'middleware' => ['auth']], function() {
      Vehicle
     =========================================*/
     Route::resource('vehicles', 'Admin\VehicleController', ['as' => 'admin']);
+    Route::get('/vehicle-photo/{photo_id}/delete', 'Admin\VehicleController@removePhoto')->name('admin.vehicle-photo.remove');
+    Route::post('/vehicle-photo/{vehicle_slug}/add', 'Admin\VehicleController@addPhotos')->name('admin.vehicle-photo.add');
 
     /*=========================================
       Car Brand
@@ -69,3 +71,9 @@ Route::get('/car-listing', function () {
 Route::get('/single-car', function () {
     return view('single');
 })->name('single');
+
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
