@@ -104,11 +104,13 @@ class VehicleController extends Controller
         if ($request->has('pictures')) {
             $index = 0;
             foreach ($request->file('pictures') as $picture) {
-                $path = $picture->storeAs('public/vehicles', 'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension());
+                $path = $picture->storeAs('vehicles',
+                    'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension(),
+                    'public_uploads');
 
                 $vehicle_photo = new VehiclePhoto();
                 $vehicle_photo->vehicle_id = $vehicle->id;
-                $vehicle_photo->photo = str_replace('public/', "", $path);
+                $vehicle_photo->photo = 'uploads/'. $path;
                 $vehicle_photo->save();
 
                 if ($index === 0) {
@@ -272,11 +274,13 @@ class VehicleController extends Controller
 
         $index = 0;
         foreach ($request->file('pictures') as $picture) {
-            $path = $picture->storeAs('public/vehicles', 'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension());
+            $path = $picture->storeAs('vehicles',
+                'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension(),
+                'public_uploads');
 
             $vehicle_photo = new VehiclePhoto();
             $vehicle_photo->vehicle_id = $vehicle->id;
-            $vehicle_photo->photo = str_replace('public/', "", $path);
+            $vehicle_photo->photo = 'uploads/'.$path;
             $vehicle_photo->save();
 
             if ($index === 0 && $vehicle->vehicle_photo_id == null) {

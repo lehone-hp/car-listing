@@ -29,7 +29,7 @@
                             <div class="owl-carousel owl-theme">
                                 @foreach($vehicle->photos as $photo)
                                     <div class="photo-carousel">
-                                        <img src="{{ asset('storage/'.$photo->photo) }}" class="img-thumbnail">
+                                        <img src="{{ asset($photo->photo) }}" class="img-thumbnail">
                                     </div>
                                 @endforeach
                             </div>

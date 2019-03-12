@@ -16,7 +16,7 @@
                     <div class="owl-carousel owl-theme">
                         @foreach($vehicle->photos as $photo)
                             <div class="photo-carousel">
-                                <img class="img-100 img-thumbnail" src="{{ asset('storage/'.$photo->photo) }}">
+                                <img class="img-100 img-thumbnail" src="{{ asset($photo->photo) }}">
                                 <a href="{{ route('admin.vehicle-photo.remove', ['photo_id'=>$photo->id]) }}"
                                    class="btn btn-danger btn-block btn-sm">Remove Photo</a>
                             </div>
