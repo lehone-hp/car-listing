@@ -60,17 +60,11 @@ Route::group(['prefix' => 'root', 'middleware' => ['auth']], function() {
 
 });
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', 'PageController@index')->name('index');
 
-Route::get('/car-listing', function () {
-    return view('listing');
-})->name('listing');
+Route::get('/car-listing', 'PageController@carListing')->name('listing');
 
-Route::get('/single-car', function () {
-    return view('single');
-})->name('single');
+Route::get('/single-car/{slug}', 'PageController@showCar')->name('single');
 
 
 Route::get('/clear-cache', function() {

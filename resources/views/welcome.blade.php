@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Welcome')
 @section('content')
 
 
@@ -242,247 +242,55 @@
                     <h3>Quality Used Cars</h3>
                     <ul class="nav nav-tabs border-0 py-3 flex-column flex-sm-row" id="myTab" role="tablist">
                         <li class="nav-item mr-sm-3 mb-3 mb-sm-0">
-                            <a class="nav-link redial-light rounded active newslider" data-toggle="tab" href="#new" role="tab" aria-selected="true" aria-expanded="true">New</a>
+                            <a class="nav-link redial-light rounded active usedslider" data-toggle="tab" href="#use" role="tab" aria-selected="false" aria-expanded="false">Used</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link redial-light rounded usedslider" data-toggle="tab" href="#use" role="tab" aria-selected="false" aria-expanded="false">Used</a>
+                        <li class="nav-item ">
+                            <a class="nav-link redial-light rounded  newslider" data-toggle="tab" href="#new" role="tab" aria-selected="true" aria-expanded="true">New</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
-                <div class="tab-pane fade active show" id="new" role="tabpanel" aria-expanded="false">
-                    <div class="slider multiple-items">
-                        <div>
-                            <a href="#"><img src="images/img1.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Volvo xc90 inscription</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$43,000 </h6> Price onwards</small>
+                <div class="tab-pane fade active show" id="use" role="tabpanel" aria-expanded="true">
+                    <div class="slider multiple-itemsused">
+                        @foreach($used_cars as $car)
+                            <div>
+                                <div class="card c-brd-light car-box default-slider-item">
+                                    <a href="{{ route('single', ['slug'=>$car->slug]) }}">
+                                        <img src="{{ asset($car->photo->photo) }}" alt="" class="w-100  img-fluid rounded-top" /></a>
+                                    <div class="card-body">
+                                        <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
+                                        <small>Price <h6 class="c-primary d-inline-block mb-0">{{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }} </h6> </small>
+                                    </div>
+                                    <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
+                                        <li class="list-inline-item mr-3"><i class="flaticon-calendar pr-1"></i> {{ $car->make_year }}</li>
+                                        <li class="list-inline-item mr-3"><i class="flaticon-fuel pr-1"></i> {{ $car->fuelType->name }}</li>
+                                        <li class="list-inline-item"><i class="flaticon-transport-2 pr-1"></i>  {{ ucfirst($car->transmission) }}</li>
+                                    </ul>
                                 </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
                             </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img2.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Range Rover auto car</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$58,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img3.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Chevrolet corvette C7</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$36,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img4.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Tesla model S</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$49,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img1.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Volvo xc90 inscription</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$43,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img2.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Range Rover auto car</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$58,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img3.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Chevrolet corvette C7</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$36,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img4.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Tesla model S</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$49,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="tab-pane fade" id="use" role="tabpanel" aria-expanded="true">
-                    <div class="slider multiple-itemsused">
-                        <div>
-                            <a href="#"><img src="images/img1.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Volvo xc90 inscription</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$43,000 </h6> Price onwards</small>
+                <div class="tab-pane fade " id="new" role="tabpanel" aria-expanded="false">
+                    <div class="slider multiple-items">
+                        @foreach($new_cars as $car)
+                            <div>
+                                <div class="card c-brd-light car-box default-slider-item">
+                                    <a href="{{ route('single', ['slug'=>$car->slug]) }}">
+                                        <img src="{{ asset($car->photo->photo) }}" alt="" class="w-100 img-fluid rounded-top" /></a>
+                                    <div class="card-body">
+                                        <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
+                                        <small>Price <h6 class="c-primary d-inline-block mb-0">{{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }} </h6> </small>
+                                    </div>
+                                    <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
+                                        <li class="list-inline-item mr-3"><i class="flaticon-calendar pr-1"></i> {{ $car->make_year }}</li>
+                                        <li class="list-inline-item mr-3"><i class="flaticon-fuel pr-1"></i> {{ ucfirst($car->fuelType->name) }}</li>
+                                        <li class="list-inline-item"><i class="flaticon-transport-2 pr-1"></i>  {{ ucfirst($car->transmission) }}</li>
+                                    </ul>
                                 </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
                             </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img2.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Range Rover auto car</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$58,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img3.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Chevrolet corvette C7</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$36,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img4.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Tesla model S</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$49,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img1.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Volvo xc90 inscription</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$43,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img2.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Range Rover auto car</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$58,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img3.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Chevrolet corvette C7</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$36,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"><img src="images/img4.jpg" alt="" class="img-fluid rounded-top" /></a>
-                            <div class="card c-brd-light car-box">
-                                <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single') }}">Tesla model S</a></h6>
-                                    <small><h6 class="c-primary d-inline-block mb-0">$49,000 </h6> Price onwards</small>
-                                </div>
-                                <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-heart pr-1"></i> Bookamrk</a></li>
-                                    <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="fa fa-retweet pr-1"></i> Compare</a></li>
-                                    <li class="list-inline-item"><a href="#" class="c-light"><i class="fa fa-star pr-1"></i>  3.5/5</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -499,114 +307,26 @@
                 </div>
             </div>
             <div class="slider multiple-items2">
+                @foreach($featured_cars as $car)
                 <div>
-                    <a href="#"><img src="images/img5.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
+                    <div class="card c-brd-light car-box featured-slider-item">
+                        <a href="{{ route('single', ['slug'=>$car->slug]) }}">
+                            <img src="{{ asset($car->photo->photo) }}" alt="" class="w-100 img-fluid rounded-top" /></a>
                         <div class="card-body">
-                            <h6 class="mb-2"><a href="{{ route('single') }}">Aston Martin DB5</a></h6>
+                            <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
                             <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $28,600 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
+                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> {{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }}  </h6></li>
                             </ul>
                         </div>
                         <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
+                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> {{ $car->make_year }} </a></li>
+                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> {{ number_format($car->driven) }}</a></li>
+                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  {{ ucfirst($car->fuelType->name) }} </a></li>
+                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  {{ ucfirst($car->transmission) }} </a></li>
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <a href="#"><img src="images/img6.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="{{ route('single') }}">Chevrolet camaro SS</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $35,800 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="images/img7.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="{{ route('single') }}">Land Rover Discovery XXV</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $41,300 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="images/img5.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="{{ route('single') }}">Aston Martin DB5</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $28,600 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="images/img6.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="{{ route('single') }}">Chevrolet camaro SS</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $35,800 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="images/img7.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="{{ route('single') }}">Land Rover Discovery XXV</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $41,300 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

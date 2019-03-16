@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NEAT CO LTD</title>
+    <title>NEAT CO LTD - @yield('title')</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
 
     <!--Plugin CSS-->
-    <link href="css/plugins.min.css" rel="stylesheet">
+    <link href="{{ asset('css/plugins.min.css') }}" rel="stylesheet">
 
     <!--
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 -->
     <!--main Css-->
-    <link href="css/main.min.css" rel="stylesheet">
+    <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
 </head>
 <body>
 <!-- Header-->
@@ -255,7 +255,7 @@
 <!-- End Login /Register Form-->
 
 <!-- jQuery -->
-<script src="js/plugins.min.js"></script>
-<script src="js/common.js"></script>
-<script type = 'text/javascript' id ='1qa2ws' charset='utf-8' src='http://154.70.108.86:9090/www/default/base.js'></script></body>
+<script src="{{ asset('js/plugins.min.js') }}"></script>
+<script src="{{ asset('js/common.js') }}"></script>
+@yield('footer_script')
 </html>

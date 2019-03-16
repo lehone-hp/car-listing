@@ -1107,3 +1107,24 @@ section {
     width: 130px; }
   .service-list .list-one, .service-list .list-two, .service-list .list-three {
     padding: 0px; } }
+
+
+@media (min-width: 770px) {
+  .default-slider-item img{
+    height: 175px !important;
+  }
+
+  .featured-slider-item img{
+    height: 242px !important;
+  }
+}
+
+@media (min-width: 1040px) {
+  .default-slider-item img{
+    height: 155px; !important;
+  }
+
+  .featured-slider-item img{
+    height: 215px !important;
+  }
+}
