@@ -29,7 +29,7 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td class="brand-logo-sm">
                                         @if($brand->photo)
-                                            <img src="{{ asset("storage/".$brand->photo) }}">
+                                            <img src="{{ asset($brand->photo) }}">
                                         @endif
                                     </td>
                                     <td>{{ $brand->name }}</td>

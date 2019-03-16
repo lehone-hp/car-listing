@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('admin/vendor/chartist/css/chartist-custom.css') }}">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/vendor/owlcarousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/vendor/owlcarousel/owl.theme.default.min.css') }}">
 
     @yield('header-style')
 
@@ -41,7 +43,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span>{{ Auth::user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                            <li><a href="{{ route('admin.user-profile') }}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                             <li><a href="{{ route('admin.logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
                         </ul>
@@ -57,10 +59,10 @@
             <nav>
                 <ul class="nav">
                     <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('root/dashboard*') ? "active" : "" }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-                    <li><a href="{{ route('admin.vehicles.index') }}" class="{{ Request::is('root/vehicles') ? "active" : "" }}">
-                            <i class="lnr lnr-car"></i>View All Vehicles</a></li>
                     <li><a href="{{ route('admin.vehicles.create') }}" class="{{ Request::is('root/vehicles/*') ? "active" : "" }}">
                             <i class="lnr lnr-car"></i>Upload New Vehicle</a></li>
+                    <li><a href="{{ route('admin.vehicles.index') }}" class="{{ Request::is('root/vehicles') ? "active" : "" }}">
+                            <i class="lnr lnr-car"></i>View All Vehicles</a></li>
                     <li><a href="{{ route('admin.brands.index') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
                             <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
                     <li><a href="{{ route('admin.car-features') }}" class="{{ Request::is('root/car-feature*') ? "active" : "" }}">
@@ -221,6 +223,31 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
+    });
+</script>
+<script src="{{ asset('admin/vendor/owlcarousel/owl.carousel.min.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            items: 1,
+            autoplay:true,
+            autoplayTimeout:3500,
+            autoplaySpeed:1500,
+            autoplayHoverPause:true,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        });
     });
 </script>
 @yield('footer_script')

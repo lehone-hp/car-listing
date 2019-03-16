@@ -13,7 +13,7 @@
                     <div class="panel">
                         <div class="panel-body no-padding">
                             @if($vehicle->photo)
-                                <img src="{{ asset('storage/'.$vehicle->photo->photo) }}">
+                                <img src="{{ asset($vehicle->photo->photo) }}">
                             @else
                                 <img src="{{ asset('admin/img/no-photo.png') }}">
                             @endif

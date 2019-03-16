@@ -39,8 +39,10 @@ class BrandController extends Controller
 
         if ($request->logo) {
             $file = $request->file('logo');
-            $path = $file->storeAs('public/brands', 'brand_'. uniqid() .'_'. time() .'.'.$file->getClientOriginalExtension());
-            $brand->photo = str_replace('public/', "", $path);
+            $path = $file->storeAs('brands',
+                'brand_'. uniqid() .'_'. time() .'.'.$file->getClientOriginalExtension(),
+                'public_uploads');
+            $brand->photo = 'uploads/'.$path;
         }
 
         $brand->save();
@@ -65,8 +67,10 @@ class BrandController extends Controller
             $path = storage_path('app/public/');
             File::delete($path.'/'.$brand->photo);
             $file = $request->file('logo');
-            $path = $file->storeAs('public/brands', 'brand_' . uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension());
-            $brand->photo = str_replace('public/', "", $path);
+            $path = $file->storeAs('brands',
+                'brand_' . uniqid() . '_' . time() . '.' . $file->getClientOriginalExtension(),
+                'public_uploads');
+            $brand->photo = 'uploads/'.$path;
         }
         $brand->save();
 

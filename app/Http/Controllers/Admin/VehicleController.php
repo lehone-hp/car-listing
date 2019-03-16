@@ -61,10 +61,10 @@ class VehicleController extends Controller
             'color' => 'nullable',
             'driven' => 'numeric|nullable',
             'tank_capacity' => 'numeric|nullable|min:0',
-            'pictures' => 'required',
+            'pictures' => 'nullable',
             'pictures.*' => 'image|max:2048'
         ]);
-        
+
         $vehicle = new Vehicle();
         $vehicle->name = $request->name;
         $vehicle->slug = Str::slug($request->name).'-'.time();
@@ -104,11 +104,13 @@ class VehicleController extends Controller
         if ($request->has('pictures')) {
             $index = 0;
             foreach ($request->file('pictures') as $picture) {
-                $path = $picture->storeAs('public/vehicles', 'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension());
+                $path = $picture->storeAs('vehicles',
+                    'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension(),
+                    'public_uploads');
 
                 $vehicle_photo = new VehiclePhoto();
                 $vehicle_photo->vehicle_id = $vehicle->id;
-                $vehicle_photo->photo = str_replace('public/', "", $path);
+                $vehicle_photo->photo = 'uploads/'. $path;
                 $vehicle_photo->save();
 
                 if ($index === 0) {
@@ -233,5 +235,62 @@ class VehicleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function removePhoto($photo_id) {
+        $photo = VehiclePhoto::find($photo_id);
+        if (!$photo) {
+            session()->flash('error', 'Sorry, the photo could not be found');
+            return redirect()->back();
+        }
+
+        $vehicle = $photo->vehicle;
+        if ($vehicle->photo_id == $photo_id) {
+            $vehicle->photo_id = null;
+            foreach ($vehicle->photos as $vehicle_photo) {
+                if ($vehicle_photo->id != $photo_id) {
+                    $vehicle->photo_id = $vehicle_photo->id;
+                    break;
+                }
+            }
+            $vehicle->save();
+        }
+
+        $photo->delete();
+        session()->flash('success', 'Photo has been deleted successfully');
+        return redirect()->back();
+    }
+
+    public function addPhotos(Request $request, $vehicle_slug) {
+        $vehicle = Vehicle::where('slug', $vehicle_slug)->first();
+        if (!$vehicle) {
+            session()->flash('error', 'Sorry, the vehicle no longer exist');
+        }
+
+        $this->validate(request(), [
+            'pictures' => 'required',
+            'pictures.*' => 'image|max:2048'
+        ]);
+
+        $index = 0;
+        foreach ($request->file('pictures') as $picture) {
+            $path = $picture->storeAs('vehicles',
+                'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension(),
+                'public_uploads');
+
+            $vehicle_photo = new VehiclePhoto();
+            $vehicle_photo->vehicle_id = $vehicle->id;
+            $vehicle_photo->photo = 'uploads/'.$path;
+            $vehicle_photo->save();
+
+            if ($index === 0 && $vehicle->vehicle_photo_id == null) {
+                $vehicle->vehicle_photo_id = $vehicle_photo->id;
+                $vehicle->save();
+            }
+            $index++;
+        }
+
+        session()->flash('success', 'Photos successfully added to '. $vehicle->name);
+        return redirect()->back();
     }
 }
