@@ -14,6 +14,18 @@ use App\Vehicle;
 
 class PageController extends Controller {
 
+    public $search;
+    function __construct() {
+        $this->search = [
+            'budget'        => null,
+            'brand'          => null,
+            'year'    => null,
+            'driven'      => null,
+            'fuel'             => null,
+            'transmission'             => '',
+        ];
+    }
+
     public function index() {
         $used_cars = Vehicle::where('condition', 'used')->get();
         $new_cars = Vehicle::where('condition', 'new')->get();
@@ -24,7 +36,9 @@ class PageController extends Controller {
     }
 
     public function carListing() {
+
         $vehicles = Vehicle::all();
+
         return view('listing', compact('vehicles'));
     }
 

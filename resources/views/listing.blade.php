@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
+@section('title', 'Search Quality Used Cars')
 @section('content')
 
     <section>
         <div class="background-image-maker gradient gradient-lr"></div>
         <div class="holder-image">
-            <img src="images/bg2.jpg" alt="" class="img-fluid d-none" />
+            <img src="{{ asset('images/bg2.jpg') }}" alt="" class="img-fluid d-none" />
         </div>
         <div class="black-overlay overlay-full"></div>
         <div class="container">
@@ -254,6 +254,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-4">
+                    <form action="{{ route('listing') }}" method="GET" id="listingFilterForm">
                     <div class="sidebar-widget d-none d-lg-block">
 
                         <div class="card c-brd-light border-top-0">
@@ -265,7 +266,8 @@
                             <div id="demo3" class="collapse show widget-content">
                                 <div class="card-body py-4 bg-white text-center">
                                     <div class="mt-3">
-                                        <input id="sl2" data-ui-slider="" type="text" value="" data-slider-min="20000" data-slider-max="100000"  data-slider-value="[20000,100000]" class="slider">
+                                        <input id="sl2" data-ui-slider="" type="text" value="" name="budget"
+                                               data-slider-min="20000" data-slider-max="100000"  data-slider-value="[20000,100000]" class="slider">
                                     </div>
                                 </div>
                             </div>
@@ -284,46 +286,12 @@
                                             <a href="#"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox1">
-                                        <label for="checkbox1" class="mb-0">Volvo XC90 Inscription</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox2">
-                                        <label for="checkbox2" class="mb-0">BMW X6 M</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox3">
-                                        <label for="checkbox3" class="mb-0">Aston Martin DB5</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox4">
-                                        <label for="checkbox4" class="mb-0">Chevrolet Camaro</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox5">
-                                        <label for="checkbox5" class="mb-0">Chevrolet Camaro SS</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox6">
-                                        <label for="checkbox6" class="mb-0">Chevrolet Corvette C7</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox7">
-                                        <label for="checkbox7" class="mb-0">Ford F-150 Raptor Tune</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox8">
-                                        <label for="checkbox8" class="mb-0">Ford Mustang</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox9">
-                                        <label for="checkbox9" class="mb-0">Ford Vignale Mondeo Turnier</label>
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <input type="checkbox" id="checkbox10">
-                                        <label for="checkbox10" class="mb-0">Honda Acura NSXn</label>
-                                    </div>
+                                    @foreach(\App\Brand::all() as $brand)
+                                        <div class="form-group">
+                                            <input type="checkbox" name="brand[]" value="{{ $brand->id }}" id="{{ 'brand_'.$brand->id }}">
+                                            <label for="{{ 'brand_'.$brand->id }}" class="mb-0">{{ $brand->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -335,29 +303,19 @@
                             </div>
                             <div id="demo5" class="collapse show widget-content">
                                 <div class="card-body py-4 bg-white">
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox11">
-                                        <label for="checkbox11" class="mb-0">2016</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox12">
-                                        <label for="checkbox12" class="mb-0">2015</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox13">
-                                        <label for="checkbox13" class="mb-0">2014</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox14">
-                                        <label for="checkbox14" class="mb-0">2013</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox15">
-                                        <label for="checkbox15" class="mb-0">2012</label>
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <input type="checkbox" id="checkbox16">
-                                        <label for="checkbox16" class="mb-0">2011</label>
+                                    <div class="row">
+                                        @for ($i = 0; $i < 20; $i++)
+                                            <div class="form-group col-4">
+                                                <input type="checkbox" name="year[]" id="{{ 'year_'.(\Carbon\Carbon::now()->year - $i) }}"
+                                                       value="{{ \Carbon\Carbon::now()->year - $i }}">
+                                                <label for="{{ 'year_'.(\Carbon\Carbon::now()->year - $i) }}"
+                                                       class="mb-0">{{ \Carbon\Carbon::now()->year - $i }}</label>
+                                            </div>
+                                        @endfor
+                                            <div class="form-group col-4">
+                                                <input type="checkbox" name="year[]" id="year_0" value="0">
+                                                <label for="year_0" class="mb-0"> < {{ \Carbon\Carbon::now()->year - 19 }}</label>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -371,7 +329,8 @@
                             <div id="demo6" class="collapse show widget-content">
                                 <div class="card-body py-4 bg-white text-center">
                                     <div class="mt-3 driven">
-                                        <input id="sl3" data-ui-slider="" type="text" value="" data-slider-min="5000" data-slider-max="8000"  data-slider-value="[5000,8000]" class="slider">
+                                        <input id="sl3" name="driven" data-ui-slider="" type="text" value=""
+                                               data-slider-min="5000" data-slider-max="8000"  data-slider-value="[5000,8000]" class="slider">
                                     </div>
                                 </div>
                             </div>
@@ -384,22 +343,12 @@
                             </div>
                             <div id="demo7" class="collapse show widget-content">
                                 <div class="card-body py-4 bg-white">
+                                    @foreach(\App\FuelType::all() as $fuel)
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox17">
-                                        <label for="checkbox17" class="mb-0">petrol</label>
+                                        <input type="checkbox" name="fuel[]" value="{{ $fuel->id }}" id="{{ 'fuel_'.$fuel->id }}">
+                                        <label for="{{ 'fuel_'.$fuel->id }}" class="mb-0">{{ $fuel->name }}</label>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox18">
-                                        <label for="checkbox18" class="mb-0">Diesel</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" id="checkbox19">
-                                        <label for="checkbox19" class="mb-0">CNG</label>
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <input type="checkbox" id="checkbox20">
-                                        <label for="checkbox20" class="mb-0">Electric</label>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -412,12 +361,12 @@
                             <div id="demo8" class="collapse show widget-content">
                                 <div class="card-body py-4 bg-white">
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox21">
-                                        <label for="checkbox21" class="mb-0">Automatic</label>
+                                        <input type="checkbox" value="auth" name="transmission[]" id="transmission_auth">
+                                        <label for="transmission_auth" class="mb-0">Automatic</label>
                                     </div>
                                     <div class="form-group mb-0">
-                                        <input type="checkbox" id="checkbox22">
-                                        <label for="checkbox22" class="mb-0">Manual</label>
+                                        <input type="checkbox" value="man" name="transmission[]" id="transmission_man">
+                                        <label for="transmission_man" class="mb-0">Manual</label>
                                     </div>
                                 </div>
                             </div>
@@ -522,6 +471,8 @@
                             </div>
                         </div>
                     </div>
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
                 <div class="col-12 col-lg-8">
                     <div class="row mb-4">
@@ -567,7 +518,7 @@
                                 <img src="{{ asset($vehicle->photo->photo) }}" alt="{{ $vehicle->name }}" class="w-100 img-fluid rounded-top" /></a>
                             <div class="card c-brd-light car-box">
                                 <div class="card-body">
-                                    <h6 class="mb-2"><a href="{{ route('single', ['slug'=>'aa']) }}">{{ $vehicle->name }}</a></h6>
+                                    <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$vehicle->slug]) }}">{{ $vehicle->name }}</a></h6>
                                     <ul class="list-unstyled mb-0 c-line-height-2_5">
                                         <li><h6 class="c-primary mb-0">
                                                 <small class="c-light">Price</small> {{ $vehicle->price ? 'XAF '.number_format($vehicle->price) : 'Negotiable' }}
@@ -606,3 +557,12 @@
 
 
 @endsection
+@section('footer_script')
+    <script>
+        $(function () {
+            $('#listingFilterForm input').change(function() {
+                $(this).closest('form').submit();
+            });
+        });
+    </script>
+@endsection('footer_script')
