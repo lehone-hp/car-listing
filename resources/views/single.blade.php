@@ -175,7 +175,7 @@
                             </tr>
                             <tr>
                                 <td class="c-dark c-font-weight-600 b-r"><i class="flaticon-clock pr-1"></i> Driven:</td>
-                                <td>{{ $vehicle->driven ? $vehicle->driven.' km' : '' }}</td>
+                                <td>{{ number_format($vehicle->driven).' km' }}</td>
                             </tr>
                             </tbody>
                         </table>

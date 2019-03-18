@@ -24,7 +24,8 @@ class PageController extends Controller {
     }
 
     public function carListing() {
-        return view('listing');
+        $vehicles = Vehicle::all();
+        return view('listing', compact('vehicles'));
     }
 
     public function showCar($slug) {

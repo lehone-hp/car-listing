@@ -174,7 +174,7 @@
 
 <!-- Top To Bottom-->
 <div class="scrollup">
-    <img src="images/up-arrow.svg" class="img-fluid" />
+    <img src="{{ asset('images/up-arrow.svg') }}" class="img-fluid" />
 </div>
 <!-- End Top To Bottom-->
 

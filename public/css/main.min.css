@@ -1117,14 +1117,29 @@ section {
   .featured-slider-item img{
     height: 242px !important;
   }
+
+  .listings-slider-item img{
+    height: 220px !important;
+  }
 }
 
-@media (min-width: 1040px) {
+@media (min-width: 992px) {
+  .listings-slider-item img{
+    height: 406px !important;
+  }
+
+}
+
+@media (min-width: 1200px) {
   .default-slider-item img{
     height: 155px; !important;
   }
 
   .featured-slider-item img{
     height: 215px !important;
+  }
+
+  .listings-slider-item img{
+    height: 264px !important;
   }
 }

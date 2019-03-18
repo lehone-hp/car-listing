@@ -31,17 +31,8 @@
                     <div class="col-12 col-xl-5 col-lg-6">
                         <h4 class="text-white text-center">Find the Right Car for you</h4>
                         <div class="row">
-                            <div class="col-3 pr-0">
-                                <ul class="nav flex-column nav-pills text-uppercase font-weight-bold text-center" id="myTab" role="tablist">
-                                    <li class="nav-item mb-1">
-                                        <a class="nav-link redial-light rounded-left active" data-toggle="tab" href="#tab1" role="tab" aria-selected="true" aria-expanded="true">New</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link redial-light rounded-left" data-toggle="tab" href="#tab2" role="tab" aria-selected="false" aria-expanded="false">Used</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-9 pl-0">
+
+                            <div class="col-12 pl-0">
                                 <div class="tab-content bg-white rounded-bottom rounded-right full-block" id="myTabContent2">
                                     <div class="tab-pane fade active show" id="tab1" role="tabpanel" aria-expanded="true">
                                         <div class="card-body p-4">
@@ -118,112 +109,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-expanded="false">
-                                        <div class="card-body p-4">
-                                            <ul class="nav nav-tabs border-0 justify-content-center mb-4  flex-column flex-sm-row text-center" id="myTab" role="tablist">
-                                                <li class="nav-item mr-sm-3 mb-3 mb-sm-0">
-                                                    <a class="nav-link redial-light rounded active" data-toggle="tab" href="#id3" role="tab" aria-selected="true" aria-expanded="true">By Budget</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link redial-light rounded" data-toggle="tab" href="#id4" role="tab" aria-selected="false" aria-expanded="false">By Brand</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
-                                                <div class="tab-pane fade active show" id="id3" role="tabpanel" aria-expanded="true">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <select class="form-control">
-                                                                <option>--- Select Budget ---</option>
-                                                                <option value="0">-Select Budget-</option>
-                                                                <option value="1-lakh-5-lakh">1000000 XAF - 5000000 XAF</option>
-                                                                <option value="5-lakh-10-lakh">5000000 XAF - 10000000 XAF</option>
-                                                                <option value="10-lakh-20-lakh">10000000 XAF - 20000000 XAF</option>
-                                                                <option value="20-lakh-50-lakh">20000000 XAF - 50000000 XAF</option>
-                                                                <option value="50-lakh-1-crore">50000000 XAF - 1 Crore</option>
-                                                                <option value="above-1-crore">Above 1 Crore</option>
-                                                            </select>
-                                                        </div>
-                                                        <a href="#" class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car</a>
-                                                    </form>
-                                                </div>
-                                                <div class="tab-pane fade" id="id4" role="tabpanel" aria-expanded="false">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <select class="form-control">
-                                                                <option>--- Select Budget ---</option>
-                                                                <option value="0">-Select Budget-</option>
-                                                                <option value="1-lakh-5-lakh">1000000 XAF - 5000000 XAF</option>
-                                                                <option value="5-lakh-10-lakh">5000000 XAF - 10000000 XAF</option>
-                                                                <option value="10-lakh-20-lakh">10000000 XAF - 20000000 XAF</option>
-                                                                <option value="20-lakh-50-lakh">20000000 XAF - 50000000 XAF</option>
-                                                                <option value="50-lakh-1-crore">50000000 XAF - 1 Crore</option>
-                                                                <option value="above-1-crore">Above 1 Crore</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <select class="form-control">
-                                                                <option value="">--- Select City ---</option>
-                                                                <option value="New Delhi">New Delhi</option>
-                                                                <option value="Bangalore">Bangalore</option>
-                                                                <option value="Mumbai">Mumbai</option>
-                                                                <option value="Hyderabad">Hyderabad</option>
-                                                                <option value="Chennai">Chennai</option>
-                                                                <option value="Jaipur">Jaipur</option>
-                                                                <option value="Pune">Pune</option>
-                                                                <option value="Kolkata">Kolkata</option>
-                                                                <option value="Gurgaon">Gurgaon</option>
-                                                                <option value="Ahmedabad">Ahmedabad</option>
-                                                                <option value="Noida">Noida</option>
-                                                                <option value="Chandigarh">Chandigarh</option>
-                                                                <option value="Indore">Indore</option>
-                                                                <option value="Kochi">Kochi</option>
-                                                                <option value="" disabled="">--------------------</option>
-                                                                <option value="Agra">Agra</option>
-                                                                <option value="Ahmedabad">Ahmedabad</option>
-                                                                <option value="Ajmer">Ajmer</option>
-                                                                <option value="Akola">Akola</option>
-                                                                <option value="Alibag">Alibag</option>
-                                                                <option value="Aligarh">Aligarh</option>
-                                                                <option value="Allahabad">Allahabad</option>
-                                                                <option value="Alwar">Alwar</option>
-                                                                <option value="Amalapuram">Amalapuram</option>
-                                                                <option value="Ambala">Ambala</option>
-                                                                <option value="Ambernath">Ambernath</option>
-                                                                <option value="Ambikapur">Ambikapur</option>
-                                                                <option value="Amethi">Amethi</option>
-                                                                <option value="Amravati">Amravati</option>
-                                                                <option value="Amreli">Amreli</option>
-                                                                <option value="Amritsar">Amritsar</option>
-                                                                <option value="Amroha">Amroha</option>
-                                                                <option value="Anantapur">Anantapur</option>
-                                                                <option value="Aurangabad(bh)">Aurangabad(bh)</option>
-                                                                <option value="Avadi">Avadi</option>
-                                                                <option value="Azamgarh">Azamgarh</option>
-                                                                <option value="Baddi">Baddi</option>
-                                                                <option value="Badlapur">Badlapur</option>
-                                                                <option value="Baran">Baran</option>
-                                                                <option value="Barasat">Barasat</option>
-                                                                <option value="Baraut">Baraut</option>
-                                                                <option value="Bardhaman">Bardhaman</option>
-                                                                <option value="Bardoli">Bardoli</option>
-                                                                <option value="Bareilly">Bareilly</option>
-                                                                <option value="Bargarh">Bargarh</option>
-                                                                <option value="Baripada">Baripada</option>
-                                                                <option value="Barmer">Barmer</option>
-                                                                <option value="Barnala">Barnala</option>
-                                                                <option value="Barpeta">Barpeta</option>
-                                                                <option value="Barrackpore">Barrackpore</option>
-                                                                <option value="Barsar">Barsar</option>
-                                                                <option value="Barshi">Barshi</option>
-                                                                <option value="Baruipur">Baruipur</option>
-                                                            </select>
-                                                        </div>
-                                                        <a href="#" class="btn btn-primary btn-block btn-md text-uppercase font-weight-bold">Find Car</a>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -238,16 +123,8 @@
     <section>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-sm-12">
+                <div class="col-12 col-sm-12 mb-3">
                     <h3>Quality Used Cars</h3>
-                    <ul class="nav nav-tabs border-0 py-3 flex-column flex-sm-row" id="myTab" role="tablist">
-                        <li class="nav-item mr-sm-3 mb-3 mb-sm-0">
-                            <a class="nav-link redial-light rounded active usedslider" data-toggle="tab" href="#use" role="tab" aria-selected="false" aria-expanded="false">Used</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link redial-light rounded  newslider" data-toggle="tab" href="#new" role="tab" aria-selected="true" aria-expanded="true">New</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="tab-content bg-white rounded-bottom rounded-right" id="myTabContent3">
@@ -260,32 +137,19 @@
                                         <img src="{{ asset($car->photo->photo) }}" alt="" class="w-100  img-fluid rounded-top" /></a>
                                     <div class="card-body">
                                         <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
-                                        <small>Price <h6 class="c-primary d-inline-block mb-0">{{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }} </h6> </small>
+                                        <small>
+                                            Price
+                                            <h6 class="c-primary d-inline-block mb-0">
+                                                {{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }}
+                                            </h6>
+                                            @if ($car->old_price)
+                                                <small class="d-inline-block c-primary"><del>XAF {{ number_format($car->old_price) }}</del></small>
+                                            @endif
+                                        </small>
                                     </div>
                                     <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
                                         <li class="list-inline-item mr-3"><i class="flaticon-calendar pr-1"></i> {{ $car->make_year }}</li>
                                         <li class="list-inline-item mr-3"><i class="flaticon-fuel pr-1"></i> {{ $car->fuelType->name }}</li>
-                                        <li class="list-inline-item"><i class="flaticon-transport-2 pr-1"></i>  {{ ucfirst($car->transmission) }}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="tab-pane fade " id="new" role="tabpanel" aria-expanded="false">
-                    <div class="slider multiple-items">
-                        @foreach($new_cars as $car)
-                            <div>
-                                <div class="card c-brd-light car-box default-slider-item">
-                                    <a href="{{ route('single', ['slug'=>$car->slug]) }}">
-                                        <img src="{{ asset($car->photo->photo) }}" alt="" class="w-100 img-fluid rounded-top" /></a>
-                                    <div class="card-body">
-                                        <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
-                                        <small>Price <h6 class="c-primary d-inline-block mb-0">{{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }} </h6> </small>
-                                    </div>
-                                    <ul class="list-inline mb-0 text-center down-content py-2 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                                        <li class="list-inline-item mr-3"><i class="flaticon-calendar pr-1"></i> {{ $car->make_year }}</li>
-                                        <li class="list-inline-item mr-3"><i class="flaticon-fuel pr-1"></i> {{ ucfirst($car->fuelType->name) }}</li>
                                         <li class="list-inline-item"><i class="flaticon-transport-2 pr-1"></i>  {{ ucfirst($car->transmission) }}</li>
                                     </ul>
                                 </div>
@@ -315,7 +179,14 @@
                         <div class="card-body">
                             <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
                             <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> {{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }}  </h6></li>
+                                <li>
+                                    <h6 class="c-primary mb-0">
+                                        <small class="c-light">Price</small> {{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }}
+                                        @if ($car->old_price)
+                                            <small class="d-inline-block c-primary"><del>XAF {{ number_format($car->old_price) }}</del></small>
+                                        @endif
+                                    </h6>
+                                </li>
                             </ul>
                         </div>
                         <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
