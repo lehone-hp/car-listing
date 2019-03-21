@@ -45,7 +45,7 @@ class PageController extends Controller {
         $search = $this->search;
         $vehicles = new Vehicle();
 
-        if ($request->has('q')) {
+        if ($request->get('q')) {
             $q = $request->get('q');
             $vehicles = $vehicles->where('name', 'like', '%'.$q.'%')
                 ->orWhere('model', 'like', '%'.$q.'%')
@@ -53,13 +53,13 @@ class PageController extends Controller {
             $search['q'] = $q;
         }
 
-        if ($request->has('color')) {
+        if ($request->get('color')) {
             $color = $request->get('color');
             $vehicles = $vehicles->where('color', $color);
             $search['color'] = $color;
         }
 
-        if ($request->has('budget')) {
+        if ($request->get('budget')) {
             $budget = explode(',', $request->get('budget'));
             if (count($budget) == 2) {
                 if ($budget[0] == 1 && $budget[1] == 1) {
@@ -72,7 +72,7 @@ class PageController extends Controller {
             }
         }
 
-        if ($request->has('brand')) {
+        if ($request->get('brand')) {
             $brands = $request->get('brand');
             $vehicles = $vehicles->where(function ($query) use ($brands) {
                 foreach ($brands as $index=>$item) {
@@ -82,17 +82,21 @@ class PageController extends Controller {
             $search['brand'] = $brands;
         }
 
-        if ($request->has('year')) {
+        if ($request->get('year')) {
             $years = $request->get('year');
             $vehicles = $vehicles->where(function ($query) use ($years) {
                 foreach ($years as $index=>$item) {
-                    $query->orWhere('make_year', $item);
+                    if ($item == 0) {
+                        $query->orWhere('make_year', '<=', Carbon::now()->year-19);
+                    } else {
+                        $query->orWhere('make_year', $item);
+                    }
                 }
             });
             $search['year'] = $years;
         }
 
-        if ($request->has('driven')) {
+        if ($request->get('driven')) {
             $driven = explode(',', $request->get('driven'));
             if (count($driven) == 2) {
                 if ($driven[0] == 1 && $driven[1] == 1) {
@@ -105,7 +109,7 @@ class PageController extends Controller {
             }
         }
 
-        if ($request->has('fuel')) {
+        if ($request->get('fuel')) {
             $fuels = $request->get('fuel');
             $vehicles = $vehicles->where(function ($query) use ($fuels) {
                 foreach ($fuels as $index=>$item) {
@@ -115,7 +119,7 @@ class PageController extends Controller {
             $search['fuel'] = $fuels;
         }
 
-        if ($request->has('transmission')) {
+        if ($request->get('transmission')) {
             $transmissions = $request->get('transmission');
             $vehicles = $vehicles->where(function ($query) use ($transmissions) {
                 foreach ($transmissions as $index=>$item) {

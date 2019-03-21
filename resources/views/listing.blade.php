@@ -452,7 +452,10 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12 col-sm-12">
-                            {{ $vehicles->links() }}
+                            {{ $vehicles->appends(['budget'=>$search['budget_low'] ? $search['budget_low'].','.$search['budget_high'] : '',
+                                'brand'=>$search['brand'], 'q'=>$search['q'], 'fuel'=>$search['fuel'],
+                                'driven'=>$search['driven_low'] ? $search['driven_low'].','.$search['driven_high'] : '',
+                                'transmission'=>$search['transmission'], 'year'=>$search['year']])->links() }}
                         </div>
                     </div>
                 </div>
