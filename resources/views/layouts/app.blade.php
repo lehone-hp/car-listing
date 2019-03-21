@@ -18,6 +18,7 @@
     <!--main Css-->
     <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
 </head>
+@yield('loader')
 <body>
 <!-- Header-->
 <header id="header-fix" class="main-header">
@@ -64,11 +65,12 @@
                     <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="form-inline my-2 my-lg-0" action="{{ route('listing') }}">
                         <div class="form-group position-relative mb-0">
-                            <input class="form-control ml-sm-2 rounded-0" type="search" placeholder="Search Car by model...">
+                            <input class="form-control ml-sm-2 rounded-0" name="q"
+                                   type="search" placeholder="Search by model, name...">
                             <div class="search position-absolute">
-                                <a href="#"><i class="fa fa-search"></i></a>
+                                <a onclick="$(this).closest('form').submit()" href="#"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
                     </form>
@@ -257,5 +259,12 @@
 <!-- jQuery -->
 <script src="{{ asset('js/plugins.min.js') }}"></script>
 <script src="{{ asset('js/common.js') }}"></script>
+<script>
+    $(window).load(function() {
+        setTimeout(function () {
+            $(".loader").fadeOut("slow");
+        }, 250)
+    });
+</script>
 @yield('footer_script')
 </html>
