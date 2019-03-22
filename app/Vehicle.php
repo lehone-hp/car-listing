@@ -25,4 +25,9 @@ class Vehicle extends Model
     public function features() {
         return $this->belongsToMany('App\Feature');
     }
+
+    public function contacts() {
+        return $this->hasMany('App\VehicleContact');
+    }
+
 }

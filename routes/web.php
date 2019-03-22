@@ -66,6 +66,11 @@ Route::get('/car-listing', 'PageController@carListing')->name('listing');
 
 Route::get('/single-car/{slug}', 'PageController@showCar')->name('single');
 
+Route::post('/contact-seller/{slug}', 'PageController@contactSeller')->name('contact.seller');
+
+Route::get('/image', function() {
+    return view('test');
+});
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');

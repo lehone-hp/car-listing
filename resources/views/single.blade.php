@@ -187,19 +187,50 @@
                             </div>
                         </div>
                         <div class="card-body py-4 bg-white">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Phone" />
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" placeholder="Message"></textarea>
-                            </div>
-                            <a href="#" class="btn btn-primary btn-lg text-uppercase"> Send Message</a>
+                            <form action="{{ route('contact.seller', ['slug'=>$vehicle->slug]) }}" method="POST">
+                                @csrf
+
+                                <div class="form-group">
+                                    <input type="text" name="name"
+                                           value="{{ old('name') }}"
+                                           class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}"
+                                           placeholder="Name *"/>
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">
+                                            {{ $errors->first('name') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="email"
+                                           value="{{ old('email') }}"
+                                           class="form-control {{ $errors->has('email') ? 'border-danger' : '' }}"
+                                           placeholder="Email *" />
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">
+                                            {{ $errors->first('email') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phone"
+                                           value="{{ old('phone') }}"
+                                           class="form-control {{ $errors->has('phone') ? 'border-danger' : '' }}"
+                                           placeholder="Phone *" />
+                                    @if ($errors->has('phone'))
+                                        <span class="text-danger">
+                                            {{ $errors->first('phone') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message"
+                                              class="form-control {{ $errors->has('message') ? 'border-danger' : '' }}"
+                                              placeholder="Message *">{{ old('message') }}</textarea>
+                                    @if ($errors->has('message'))
+                                        <span class="text-danger">
+                                            {{ $errors->first('message') }}</span>
+                                    @endif
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg text-uppercase"> Send Message</button>
+                            </form>
                         </div>
                     </div>
                 </div>

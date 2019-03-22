@@ -10,9 +10,12 @@ namespace App\Http\Controllers;
 
 
 use App\Brand;
+use App\Jobs\VehicleContactEmailJob;
 use App\Vehicle;
+use App\VehicleContact;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller {
 
@@ -138,5 +141,49 @@ class PageController extends Controller {
     public function showCar($slug) {
         $vehicle = Vehicle::where('slug', $slug)->first();
         return view('single', compact('vehicle'));
+    }
+
+    public function contactSeller(Request $request, $slug) {
+
+        $vehicle = Vehicle::where('slug', $slug)->first();
+        if (!$vehicle) {
+            session()->flash('error', 'Sorry! the vehicle no longer exist');
+            return redirect()->back();
+        }
+
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'message' => 'required'
+        ]);
+
+        $contact = new VehicleContact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->message = $request->message;
+        $contact->vehicle_id = $vehicle->id;
+        $contact->save();
+
+        // Send an email to the admin
+        //$this->dispatch(new VehicleContactEmailJob($vehicle, $contact));
+        try {
+            //Mail::to('lehone4hope@gmail.com')
+            //    ->queue(new \App\Mail\VehicleContact($vehicle, $contact));
+
+            Mail::send('email.vehicle_contact',
+                ['contact' => $contact,
+                    'vehicle' => $vehicle], function ($message) {
+                    $to_email = 'lehone4hope@gmail.com';
+
+                    $message->to($to_email)
+                        ->subject('Vehicle Contact');
+                });
+
+        } catch (\Exception $e) {}
+
+        session()->flash('success', 'Message sent, seller will get back to you shortly');
+        return redirect()->back();
     }
 }

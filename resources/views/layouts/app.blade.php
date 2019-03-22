@@ -52,7 +52,7 @@
     </div>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 py-3 px-0">
-            <a class="navbar-brand" href="{{ route('index') }}"><img src="images/logo-v1.png" alt="" class="img-fluid" /></a>
+            <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('images/logo-v1.png') }}" alt="" class="img-fluid" /></a>
             <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 <span class="navbar-toggler-icon"></span>
