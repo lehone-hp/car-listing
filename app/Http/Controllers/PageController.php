@@ -175,7 +175,7 @@ class PageController extends Controller {
             Mail::send('email.vehicle_contact',
                 ['contact' => $contact,
                     'vehicle' => $vehicle], function ($message) {
-                    $to_email = 'lehone4hope@gmail.com';
+                    $to_email = setting('to_email', 'neatlimbe@camnet.cm');
 
                     $message->to($to_email)
                         ->subject('Vehicle Contact');
@@ -185,5 +185,40 @@ class PageController extends Controller {
 
         session()->flash('success', 'Message sent, seller will get back to you shortly');
         return redirect()->back();
+    }
+
+    public function aboutUs() {
+        return view('aboutus');
+    }
+
+    public function contact() {
+        return view('contact');
+    }
+
+    public function postContact(Request $request) {
+
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'email|nullable',
+            'message' => 'required'
+        ]);
+        try {
+            Mail::send('email.visitor_email',
+                ['name' => $request->name,
+                 'email' => $request->email,
+                 'content' => $request->message], function ($message) {
+                    $to_email = setting('to_email', 'neatlimbe@camnet.cm');
+
+                    $message->to($to_email)
+                        ->subject('Visitor Contact');
+                });
+        } catch (\Exception $e) {}
+
+        session()->flash('success', 'Message sent successfully, we will get back to you shortly');
+        return redirect()->back();
+    }
+
+    public function services() {
+        return view('services');
     }
 }

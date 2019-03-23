@@ -22,6 +22,8 @@ Route::group(['prefix' => 'root', 'middleware' => ['auth']], function() {
     })->name('admin.logout');
 
     Route::get('/dashboard', 'Admin\AdminController@getDashboard')->name('admin.dashboard');
+    Route::get('/settings', 'Admin\SettingsController@index')->name('admin.settings');
+    Route::post('/settings', 'Admin\SettingsController@store')->name('admin.settings');
 
     /*=========================================
      Vehicle
@@ -74,6 +76,13 @@ Route::get('/car-listing', 'PageController@carListing')->name('listing');
 Route::get('/single-car/{slug}', 'PageController@showCar')->name('single');
 
 Route::post('/contact-seller/{slug}', 'PageController@contactSeller')->name('contact.seller');
+
+Route::get('/about-us', 'PageController@aboutUs')->name('aboutus');
+
+Route::get('/services', 'PageController@services')->name('services');
+
+Route::get('/contact', 'PageController@contact')->name('contact');
+Route::post('/contact', 'PageController@postContact')->name('contact');
 
 Route::get('/image', function() {
     return view('test');

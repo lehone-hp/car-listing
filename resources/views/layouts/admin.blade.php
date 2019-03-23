@@ -21,7 +21,6 @@
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('admin/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin/img/favicon.png') }}">
 </head>
 
@@ -44,7 +43,7 @@
                             <span>{{ Auth::user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('admin.user-profile') }}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-                            <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                            <li><a href="{{ route('admin.settings') }}"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                             <li><a href="{{ route('admin.logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
                         </ul>
                     </li>
@@ -82,7 +81,8 @@
                     <li><a href="{{ route('admin.user-profile') }}" class="{{ Request::is('root/user-profile*') ? "active" : "" }}">
                             <i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 
-                    <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                    <li><a href="{{ route('admin.settings') }}" class="{{ Request::is('root/settings*') ? "active" : "" }}">
+                            <i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
 
                     <li><a href="{{ route('admin.logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 

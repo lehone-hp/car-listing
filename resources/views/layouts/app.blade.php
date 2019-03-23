@@ -7,14 +7,14 @@
     <title>NEAT CO LTD - @yield('title')</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('NEAT-LOGO.png') }}">
 
     <!--Plugin CSS-->
     <link href="{{ asset('css/plugins.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet"/>
 
-    <!--
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
--->
+    {{--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">--}}
+
     <!--main Css-->
     <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
 </head>
@@ -27,8 +27,8 @@
             <div class="row">
                 <div class="col-12 col-md-6 text-center text-md-left align-self-center">
                     <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="mailto:helpteam@example.com"><i class="fa fa-envelope pr-1"></i> helpteam@example.com </a></li>
-                        <li class="list-inline-item"><a href="tel:+1 800 589 6587"><i class="fa fa-phone pr-1"></i> +237 671 234 567</a></li>
+                        <li class="list-inline-item"><a href="mailto:{{ settings('contact_email', 'neatlimbe@camnet.cm') }}"><i class="fa fa-envelope pr-1"></i> {{ settings('contact_email', 'neatlimbe@camnet.cm') }} </a></li>
+                        <li class="list-inline-item"><a href="tel:{{ settings('contact_phone', '237 233 33 21 50') }}"><i class="fa fa-phone pr-1"></i> {{ settings('contact_phone', '237 233 33 21 50') }}</a></li>
                     </ul>
                 </div>
                 {{--
@@ -60,11 +60,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mr-lg-4 mt-4 mt-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('index') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('listing') }}">Car listing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Request::is('/') ? "active" : "" }}" href="{{ route('index') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Request::is('car-listing*') || Request::is('single-car*') ? "active" : "" }}" href="{{ route('listing') }}">Car listing</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Request::is('services') ? "active" : "" }}" href="{{ route('services') }}">Services</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Request::is('about-us') ? "active" : "" }}" href="{{ route('aboutus') }}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Request::is('contact') ? "active" : "" }}" href="{{ route('contact') }}">Contact</a></li>
                     <form class="form-inline my-2 my-lg-0" action="{{ route('listing') }}">
                         <div class="form-group position-relative mb-0">
                             <input class="form-control ml-sm-2 rounded-0" name="q"
@@ -141,10 +141,9 @@
                 <h6 class="text-white">Contact Info</h6>
                 <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim aliquam.</p>
                 <ul class="list-unstyled footer-address mb-0">
-                    <li><a href="#"><i class="fa fa-map-marker pr-2"></i> 260 5th Ave, New York, NY 10001, USA</a></li>
-                    <li><a href="tel:+1 212-725-5400"><i class="fa fa-phone pr-2"></i> +1 212-725-5400</a></li>
-                    <li><a href="mailto:"><i class="fa fa-envelope pr-2"></i> support@example.com</a></li>
-                    <li><a href="#"><i class="fa fa-fax pr-2"></i> Terms & Conditions</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker pr-2"></i> {{ settings('contact_address', 'NEAT Building - Between Presbook & BICEC, Ahidjo Street - Bown Beach - Limbe') }}</a></li>
+                    <li><a href="tel:+1 212-725-5400"><i class="fa fa-phone pr-2"></i> {{ settings('contact_phone', '237 233 33 21 50') }}</a></li>
+                    <li><a href="mailto:"><i class="fa fa-envelope pr-2"></i> {{ settings('contact_email', 'neatlimbe@camnet.cm') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -180,91 +179,24 @@
 </div>
 <!-- End Top To Bottom-->
 
-<!-- Login /Register Form-->
-<div id="signup" class="popupContainer bg-white">
-    <header class="popupHeader p-3 text-uppercase">
-        <span class="header_title font-weight-bold c-dark">Login</span>
-        <span class="modal_close float-right"><i class="fa fa-times"></i></span>
-    </header>
-    <div class="card-body">
-        <!-- Social Login -->
-        <!-- Username & Password Login form -->
-        <div class="user_login">
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-control rounded-0" placeholder="username or email address" />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control rounded-0" placeholder="password" />
-                </div>
-                <div class="checkbox form-group">
-                    <input id="remember" type="checkbox" />
-                    <label for="remember">Remember me on this computer</label>
-                </div>
-                <div class="action_btns form-group">
-                    <a href="#" class="btn btn-primary btn-md btn-block">Login</a>
-                </div>
-                <div class="form-group mb-0 text-center">
-                    <p>Sign in with your social network</p>
-                    <ul class="list-inline footer-social mb-2">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest-p pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
-                    <div class="border border-top-0 c-brd-light my-3"></div>
-                    Don't have an account <a href="#" class="register_form c-primary">Sign Up</a>
-                </div>
-            </form>
-        </div>
-
-        <!-- Register Form -->
-        <div class="user_register">
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-control rounded-0" placeholder="Username" />
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control rounded-0" placeholder="Email Address" />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control rounded-0" placeholder="Password" />
-                </div>
-                <div class="checkbox form-group">
-                    <input id="send_updates" type="checkbox" />
-                    <label for="send_updates">Send me occasional email updates</label>
-                </div>
-                <div class="action_btns form-group">
-                    <a href="#" class="btn btn-primary btn-md btn-block">Register</a>
-                </div>
-                <div class="form-group mb-0 text-center">
-                    <p>Register with your social network</p>
-                    <ul class="list-inline footer-social mb-2">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest-p pr-3"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
-                    <div class="border border-top-0 c-brd-light my-3"></div>
-                    Already have an account <a href="#" class="login_form c-primary">Sign In</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End Login /Register Form-->
-
 <!-- jQuery -->
 <script src="{{ asset('js/plugins.min.js') }}"></script>
 <script src="{{ asset('js/common.js') }}"></script>
+<script src="{{ asset('toastr/toastr.min.js') }}"></script>
 <script>
     $(window).load(function() {
         setTimeout(function () {
             $(".loader").fadeOut("slow");
         }, 250)
     });
+
+    @if(session()->has('success'))
+    toastr.success('{{session()->get("success")}}');
+    @endif
+
+    @if(session()->has('error'))
+    toastr.error('{{session()->get("error") }}');
+    @endif
 </script>
 @yield('footer_script')
 </html>

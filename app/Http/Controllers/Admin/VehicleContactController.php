@@ -49,6 +49,8 @@ class VehicleContactController extends Controller {
 
     public function show($id) {
         $message = VehicleContact::findOrFail($id);
+        $message->status = 'read';
+        $message->save();
         return view('admin.contacts.show', compact('message'));
     }
 

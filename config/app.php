@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        QCod\AppSettings\AppSettingsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -191,6 +192,7 @@ return [
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
+        "AppSettings" => QCod\AppSettings\Facade::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
