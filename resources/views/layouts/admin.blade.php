@@ -58,20 +58,32 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('root/dashboard*') ? "active" : "" }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::is('root/dashboard*') ? "active" : "" }}">
+                            <i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+
                     <li><a href="{{ route('admin.vehicles.create') }}" class="{{ Request::is('root/vehicles/*') ? "active" : "" }}">
                             <i class="lnr lnr-car"></i>Upload New Vehicle</a></li>
+
                     <li><a href="{{ route('admin.vehicles.index') }}" class="{{ Request::is('root/vehicles') ? "active" : "" }}">
                             <i class="lnr lnr-car"></i>View All Vehicles</a></li>
+
+                    <li><a href="{{ route('admin.contact.index') }}" class="{{ Request::is('root/vehicle-contact*') ? "active" : "" }}">
+                            <i class="lnr lnr-inbox"></i> <span>Vehicle Contacts</span></a></li>
+
                     <li><a href="{{ route('admin.brands.index') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
                             <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>
+
                     <li><a href="{{ route('admin.car-features') }}" class="{{ Request::is('root/car-feature*') ? "active" : "" }}">
                             <i class="lnr lnr-layers"></i> <span>Car Features</span></a></li>
+
                     <li><a href="{{ route('admin.fuel-types') }}" class="{{ Request::is('root/fuel-types*') ? "active" : "" }}">
                             <i class="lnr lnr-list"></i> <span>Fuel Types</span></a></li>
+
                     <li><a href="{{ route('admin.user-profile') }}" class="{{ Request::is('root/user-profile*') ? "active" : "" }}">
                             <i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+
                     <li><a href="{{ route('admin.logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 
                 </ul>

@@ -31,6 +31,13 @@ Route::group(['prefix' => 'root', 'middleware' => ['auth']], function() {
     Route::post('/vehicle-photo/{vehicle_slug}/add', 'Admin\VehicleController@addPhotos')->name('admin.vehicle-photo.add');
 
     /*=========================================
+     Vehicle
+    =========================================*/
+    Route::get('/vehicle-contact', 'Admin\VehicleContactController@index')->name('admin.contact.index');
+    Route::get('/vehicle-contact/{id}', 'Admin\VehicleContactController@show')->name('admin.contact.show');
+    Route::post('/vehicle-contact/{id}/delete', 'Admin\VehicleContactController@deleteMessage')->name('admin.contact.delete');
+
+    /*=========================================
       Car Brand
     =========================================*/
     Route::resource('brands', 'Admin\BrandController', ['as' => 'admin']);
