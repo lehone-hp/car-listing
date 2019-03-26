@@ -48,20 +48,6 @@ class PageController extends Controller {
         $search = $this->search;
         $vehicles = new Vehicle();
 
-        if ($request->get('q')) {
-            $q = $request->get('q');
-            $vehicles = $vehicles->where('name', 'like', '%'.$q.'%')
-                ->orWhere('model', 'like', '%'.$q.'%')
-                ->orWhere('description', 'like', '%'.$q.'%');
-            $search['q'] = $q;
-        }
-
-        if ($request->get('color')) {
-            $color = $request->get('color');
-            $vehicles = $vehicles->where('color', $color);
-            $search['color'] = $color;
-        }
-
         if ($request->get('budget')) {
             $budget = explode(',', $request->get('budget'));
             if (count($budget) == 2) {
@@ -75,6 +61,7 @@ class PageController extends Controller {
             }
         }
 
+
         if ($request->get('brand')) {
             $brands = $request->get('brand');
             $vehicles = $vehicles->where(function ($query) use ($brands) {
@@ -84,6 +71,33 @@ class PageController extends Controller {
             });
             $search['brand'] = $brands;
         }
+
+        if ($request->get('q')) {
+            $q = $request->get('q');
+            if ($request->get('frmx')) {
+                $frmx = $request->get('frmx');
+                if ($frmx == 2 || $frmx == 3) {
+                    $vehicles = $vehicles->where('model', 'like', '%'.$q.'%');
+                } else {
+                    $vehicles = $vehicles->where('name', 'like', '%'.$q.'%')
+                        ->orWhere('model', 'like', '%'.$q.'%')
+                        ->orWhere('description', 'like', '%'.$q.'%');
+                }
+            } else {
+                $vehicles = $vehicles->where('name', 'like', '%'.$q.'%')
+                    ->orWhere('model', 'like', '%'.$q.'%')
+                    ->orWhere('description', 'like', '%'.$q.'%');
+            }
+
+            $search['q'] = $q;
+        }
+
+        if ($request->get('color')) {
+            $color = $request->get('color');
+            $vehicles = $vehicles->where('color', $color);
+            $search['color'] = $color;
+        }
+
 
         if ($request->get('year')) {
             $years = $request->get('year');
@@ -140,7 +154,10 @@ class PageController extends Controller {
 
     public function showCar($slug) {
         $vehicle = Vehicle::where('slug', $slug)->first();
-        return view('single', compact('vehicle'));
+        if ($vehicle) {
+            $related = Vehicle::where('brand_id', $vehicle->brand_id)->paginate(20);
+        }
+        return view('single', compact('vehicle', 'related'));
     }
 
     public function contactSeller(Request $request, $slug) {

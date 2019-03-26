@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $vehicle->name)
+@section('title', $vehicle ? $vehicle->name : 'Vehicle Not Found' )
 @section('content')
 
     <!-- Page Inner-->
@@ -34,6 +34,8 @@
     </section>
     <!-- End Breadcrumb -->
 
+
+    @if ($vehicle)
     <!-- List Details -->
     <section>
         <div class="container">
@@ -43,12 +45,12 @@
                         <div class="flexslider c-bg-dark mb-4">
                             <ul class="slides">
                                 @foreach($vehicle->photos as $photo)
-                                <li class="position-relative"  data-thumb="{{ asset($photo->photo) }}">
-                                    <img src="{{ asset($photo->photo) }}" alt="" class="w-100 img-fluid" />
-                                    <div class="fullscreen position-absolute text-center">
-                                        <a href="{{ asset($photo->photo) }}" class="btn-gallery c-primary"><i class="fa fa-arrows-alt"></i></a>
-                                    </div>
-                                </li>
+                                    <li class="position-relative"  data-thumb="{{ asset($photo->photo) }}">
+                                        <img src="{{ asset($photo->photo) }}" alt="" class="w-100 img-fluid" />
+                                        <div class="fullscreen position-absolute text-center">
+                                            <a href="{{ asset($photo->photo) }}" class="btn-gallery c-primary"><i class="fa fa-arrows-alt"></i></a>
+                                        </div>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -79,46 +81,46 @@
                                         <table class="table table-striped mb-0">
                                             <tbody>
                                             @if($vehicle->engine_type)
-                                            <tr>
-                                                <td>Engine Type</td>
-                                                <td>{{ $vehicle->engine_type }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>Engine Type</td>
+                                                    <td>{{ $vehicle->engine_type }}</td>
+                                                </tr>
                                             @endif
                                             @if($vehicle->engine_displacement)
                                                 <tr>
-                                                <td>Displacement</td>
-                                                <td>{{ $vehicle->engine_displacement }}</td>
-                                            </tr>
+                                                    <td>Displacement</td>
+                                                    <td>{{ $vehicle->engine_displacement }}</td>
+                                                </tr>
                                             @endif
                                             @if($vehicle->fuel_tank_capacity)
-                                            <tr>
-                                                <td>Fuel Tank Capacity</td>
-                                                <td>{{ $vehicle->fuel_tank_capacity.' Litre' }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>Fuel Tank Capacity</td>
+                                                    <td>{{ $vehicle->fuel_tank_capacity.' Litre' }}</td>
+                                                </tr>
                                             @endif
                                             @if($vehicle->door_count)
-                                            <tr>
-                                                <td>Number of Doors</td>
-                                                <td>{{ $vehicle->door_count }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>Number of Doors</td>
+                                                    <td>{{ $vehicle->door_count }}</td>
+                                                </tr>
                                             @endif
                                             @if($vehicle->cylinder_count)
-                                            <tr>
-                                                <td>Number of Cylinders</td>
-                                                <td>{{ $vehicle->cylinder_count }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>Number of Cylinders</td>
+                                                    <td>{{ $vehicle->cylinder_count }}</td>
+                                                </tr>
                                             @endif
                                             @if($vehicle->gear_count)
-                                            <tr>
-                                                <td>Number of Gears</td>
-                                                <td>{{ $vehicle->gear_count }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>Number of Gears</td>
+                                                    <td>{{ $vehicle->gear_count }}</td>
+                                                </tr>
                                             @endif
                                             @if($vehicle->seat_count)
-                                            <tr>
-                                                <td>Number of Seats</td>
-                                                <td>{{ $vehicle->seat_count }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>Number of Seats</td>
+                                                    <td>{{ $vehicle->seat_count }}</td>
+                                                </tr>
                                             @endif
                                             </tbody>
                                         </table>
@@ -132,9 +134,9 @@
                                     <div class="card-body pt-4">
                                         <div class="row">
                                             @foreach($vehicle->features->sortBy('name') as $feature)
-                                            <div class="col-12 col-sm-6">
-                                                <i class="fa fa-check c-primary pr-2"></i> {{ $feature->name }}
-                                            </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <i class="fa fa-check c-primary pr-2"></i> {{ $feature->name }}
+                                                </div>
                                             @endforeach
                                         </div>
                                     </div>
@@ -239,7 +241,7 @@
     </section>
     <!-- End List Details -->
 
-    <!-- Car Featured-->
+    <!-- Related Cars-->
     <section class="bg-light">
         <div class="container">
             <div class="row">
@@ -361,4 +363,12 @@
         </div>
     </section>
     <!-- End Car Featured-->
+    @else
+    <section>
+        <div class="container">
+            <h3>Vehicle Not Found</h3>
+            <p>Sorry, the Vehicle you are looking for does not exist. <a href="{{ route('listing') }}">Keep Searching?</a></p>
+        </div>
+    </section>
+    @endif
 @endsection

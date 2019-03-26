@@ -1046,10 +1046,6 @@ section {
     border-top-right-radius: .25rem !important; } }
 
 @media (max-width: 991px) {
-    #myTabContent3
-    {
-        padding-top: 60px;
-    }
   .navbar .navbar-nav .nav-link {
     padding: 0.8rem 0.7rem !important; }
   .navbar li.dropdown > .dropdown-menu {

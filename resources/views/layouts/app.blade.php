@@ -69,6 +69,7 @@
                         <div class="form-group position-relative mb-0">
                             <input class="form-control ml-sm-2 rounded-0" name="q"
                                    type="search" placeholder="Search by model, name...">
+                            <input type="hidden" name="frmx" value="1">
                             <div class="search position-absolute">
                                 <a onclick="$(this).closest('form').submit()" href="#"><i class="fa fa-search"></i></a>
                             </div>

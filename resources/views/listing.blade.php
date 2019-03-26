@@ -138,6 +138,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" name="frmx" value="3">
 
                                 <div class="col-12 col-md-4 col-xl-2">
                                     <label class="mb-4"></label>
@@ -279,6 +280,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="frmx" value="3">
                         {{--
                         <div class="card c-brd-light border-top-0">
                             <div class="c-bg-light">
@@ -389,7 +391,7 @@
                 <div class="col-12 col-lg-8">
                     <div class="row mb-4">
                         <div class="col-12 col-md-5 col-xl-6 align-self-center">
-                            <p class="mb-0">12 Vehicles Matching</p>
+                            <p class="mb-0">{{ $vehicles->total() }} Vehicle{{ $vehicles->total()!=1 ? 's' : '' }} Matching</p>
                         </div>
                         <div class="col-12 col-md-7 col-xl-6 text-right">
                             <div class="d-inline-block pr-md-3 mt-3 mt-md-0">
@@ -408,11 +410,11 @@
                             <div class="d-inline-block mt-3 mt-md-0">
                                 <div class="listing-filter">
                                     <ul class="nav nav-pills justify-content-md-end mb-0">
-                                        <li class="nav-item mr-2">
+                                        {{--<li class="nav-item mr-2">
                                             <a class="nav-link redial-light rounded" href="#"><i class="fa fa-th-list"></i></a>
-                                        </li>
+                                        </li>--}}
                                         <li class="nav-item">
-                                            <a class="nav-link redial-light rounded active" href="#"><i class="fa fa-th"></i></a>
+                                            <a class="nav-link redial-light rounded active"><i class="fa fa-th"></i></a>
                                         </li>
                                     </ul>
                                 </div>
