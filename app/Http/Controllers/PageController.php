@@ -32,30 +32,40 @@ class PageController extends Controller {
             'transmission'=> [],
             'q'           => '',
             'color'       => '',
+            'ng'          => null,
         ];
     }
 
     public function index() {
-        $used_cars = Vehicle::where('condition', 'used')->get();
-        $new_cars = Vehicle::where('condition', 'new')->get();
-        $featured_cars = Vehicle::where('featured', true)->get();
-        $brands = Brand::all();
+        $used_cars = Vehicle::where('condition', 'used')->orderBy('created_at', 'DESC')->get();
+        $new_cars = Vehicle::where('condition', 'new')->orderBy('created_at', 'DESC')->get();
+        $featured_cars = Vehicle::where('featured', true)->orderBy('created_at', 'DESC')->get();
+        $top_brand_chunk = Brand::where('photo', '!=', null)->orderBy('name', 'ASC')->get()->chunk(12);
         return view('welcome', compact('used_cars', 'new_cars',
-            'featured_cars', 'brands'));
+            'featured_cars', 'top_brand_chunk'));
     }
 
     public function carListing(Request $request) {
         $search = $this->search;
         $vehicles = new Vehicle();
 
+        if ($request->get('ng')) {
+            $ng = $request->get('ng');
+            $vehicles = $vehicles->where('price', 0);
+            $search['ng'] = $ng;
+        }
+
         if ($request->get('budget')) {
             $budget = explode(',', $request->get('budget'));
             if (count($budget) == 2) {
                 if ($budget[0] == 1 && $budget[1] == 1) {
                     $vehicles = $vehicles->where('price', '>=', 100000000);
+                } else if ($budget[0] == -1 && $budget[1] == -1) {
+                    $vehicles = $vehicles->where('price', 0);
                 } else {
-                    $vehicles = $vehicles->whereBetween('price', [$budget[0],$budget[1]]);
+                    $vehicles = $vehicles->orWhereBetween('price', [$budget[0],$budget[1]]);
                 }
+
                 $search['budget_low'] = $budget[0];
                 $search['budget_high'] = $budget[1];
             }
@@ -66,7 +76,9 @@ class PageController extends Controller {
             $brands = $request->get('brand');
             $vehicles = $vehicles->where(function ($query) use ($brands) {
                 foreach ($brands as $index=>$item) {
-                    $query->orWhere('brand_id', $item);
+                    if ($item != null) {
+                        $query->orWhere('brand_id', $item);
+                    }
                 }
             });
             $search['brand'] = $brands;
@@ -103,10 +115,12 @@ class PageController extends Controller {
             $years = $request->get('year');
             $vehicles = $vehicles->where(function ($query) use ($years) {
                 foreach ($years as $index=>$item) {
-                    if ($item == 0) {
-                        $query->orWhere('make_year', '<=', Carbon::now()->year-19);
-                    } else {
-                        $query->orWhere('make_year', $item);
+                    if ($item != null) {
+                        if ($item == 1) {
+                            $query->orWhere('make_year', '<=', Carbon::now()->year-19);
+                        } else {
+                            $query->orWhere('make_year', $item);
+                        }
                     }
                 }
             });
@@ -130,7 +144,9 @@ class PageController extends Controller {
             $fuels = $request->get('fuel');
             $vehicles = $vehicles->where(function ($query) use ($fuels) {
                 foreach ($fuels as $index=>$item) {
-                    $query->orWhere('fuel_type_id', $item);
+                    if ($item != null) {
+                        $query->orWhere('fuel_type_id', $item);
+                    }
                 }
             });
             $search['fuel'] = $fuels;
@@ -140,13 +156,15 @@ class PageController extends Controller {
             $transmissions = $request->get('transmission');
             $vehicles = $vehicles->where(function ($query) use ($transmissions) {
                 foreach ($transmissions as $index=>$item) {
-                    $query->orWhere('transmission', $item);
+                    if ($item != null) {
+                        $query->orWhere('transmission', $item);
+                    }
                 }
             });
             $search['transmission'] = $transmissions;
         }
 
-        $vehicles = $vehicles->paginate(12);
+        $vehicles = $vehicles->orderBy('created_at', 'DESC')->paginate(16);
         $colors = config('constants.colors');
 
         return view('listing', compact('vehicles', 'search', 'colors'));
@@ -155,7 +173,7 @@ class PageController extends Controller {
     public function showCar($slug) {
         $vehicle = Vehicle::where('slug', $slug)->first();
         if ($vehicle) {
-            $related = Vehicle::where('brand_id', $vehicle->brand_id)->paginate(20);
+            $related = Vehicle::where('brand_id', $vehicle->brand_id)->orderBy('created_at', 'DESC')->paginate(20);
         }
         return view('single', compact('vehicle', 'related'));
     }
@@ -222,8 +240,8 @@ class PageController extends Controller {
         try {
             Mail::send('email.visitor_email',
                 ['name' => $request->name,
-                 'email' => $request->email,
-                 'content' => $request->message], function ($message) {
+                    'email' => $request->email,
+                    'content' => $request->message], function ($message) {
                     $to_email = setting('to_email', 'neatlimbe@camnet.cm');
 
                     $message->to($to_email)

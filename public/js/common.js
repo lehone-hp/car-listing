@@ -85,7 +85,7 @@ $('input,textarea').focus(function(){
         infinite: true,
         arrows: true,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         lazyLoad: 'ondemand',
         responsive: [
             {
@@ -340,7 +340,7 @@ $('input,textarea').focus(function(){
  '<li><i class="lnr lnr-map pr-2"></i> 9868 Forest Avenue Pompano Beach, FL 33060</li>'+
  '<li><i class="lnr lnr-phone-handset pr-2"></i>1800 123 1800</li>'+
  '<li><i class="lnr lnr-printer pr-2"></i> 1800 123 1985</li>'+
- '<li><i class="lnr lnr-envelope pr-2"></i> contact@carspot.co.in</li>'+
+ '<li><i class="lnr lnr-envelope pr-2"></i> contact@neatco.co.in</li>'+
  '</ul>'+
  '</div>'
  }

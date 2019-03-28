@@ -61,13 +61,15 @@
                             <i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 
                     <li><a href="{{ route('admin.vehicles.create') }}" class="{{ Request::is('root/vehicles/*') ? "active" : "" }}">
-                            <i class="lnr lnr-car"></i>Upload New Vehicle</a></li>
+                            <i class="lnr lnr-plus-circle"></i>Upload New Vehicle</a></li>
 
                     <li><a href="{{ route('admin.vehicles.index') }}" class="{{ Request::is('root/vehicles') ? "active" : "" }}">
                             <i class="lnr lnr-car"></i>View All Vehicles</a></li>
 
                     <li><a href="{{ route('admin.contact.index') }}" class="{{ Request::is('root/vehicle-contact*') ? "active" : "" }}">
-                            <i class="lnr lnr-inbox"></i> <span>Vehicle Contacts</span></a></li>
+                            <i class="lnr lnr-inbox"></i> <span>Vehicle Contacts</span>&nbsp;
+                            <span class="badge badge-danger">{{ count(\App\VehicleContact::where('status', 'unread')->get()) ?: '' }}</span></a>
+                    </li>
 
                     <li><a href="{{ route('admin.brands.index') }}" class="{{ Request::is('root/brands*') ? "active" : "" }}">
                             <i class="lnr lnr-tag"></i> <span>Car Brands</span></a></li>

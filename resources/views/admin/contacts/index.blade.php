@@ -33,7 +33,7 @@
                     </form>
                 </div>
                 <div class="col-sm-12">
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -47,7 +47,7 @@
                         <tbody>
                         @if (count($contacts) > 0)
                             @foreach($contacts as $contact)
-                            <tr>
+                            <tr class="{{ $contact->status == 'unread' ? 'bg-unread' : '' }}">
                                 <td><a href="{{ route('admin.contact.show', ['id'=>$contact->id]) }}">{{ $contact->name }}</a></td>
                                 <td>{{ $contact->email }}</td>
                                 <td>{{ $contact->phone }}</td>

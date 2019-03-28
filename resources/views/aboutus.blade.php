@@ -45,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <h3>About CarSpot</h3>
+                    <h3>About NeatCo</h3>
                     <p class="lead c-primary c-font-weight-400 font-italic">In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
                     <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
                     <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>
@@ -60,7 +60,7 @@
         <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-12 col-lg-6 pb-4">
-                    <h3>Why to Choose CarSpot</h3>
+                    <h3>Why to Choose NeatCo</h3>
                     <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
                 </div>
             </div>

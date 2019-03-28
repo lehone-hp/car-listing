@@ -50,7 +50,7 @@
                                                         <div class="form-group">
                                                             <select class="form-control rounded" name="budget">
                                                                 <option value="">--Select Budget--</option>
-                                                                <option value="500000,2000000">500,000 - 2,000,000</option>
+                                                                <option value="0,2000000">0 - 2,000,000</option>
                                                                 <option value="2000000,10000000">2,000,000 - 10,000,000</option>
                                                                 <option value="10000000,20000000">10,000,000 - 20,000,000</option>
                                                                 <option value="20000000,50000000">20,000,000 - 50,000,000</option>
@@ -159,9 +159,6 @@
                                     <li>
                                         <h6 class="c-primary mb-0">
                                             <small class="c-light">Price</small> {{ $car->price ? 'XAF '.number_format($car->price) : 'Negotiable' }}
-                                            @if ($car->old_price)
-                                                <small class="d-inline-block c-primary"><del>XAF {{ number_format($car->old_price) }}</del></small>
-                                            @endif
                                         </h6>
                                     </li>
                                 </ul>
@@ -190,342 +187,25 @@
                 </div>
             </div>
             <div id="owl-client" class="owl-carousel owl-theme">
-                <div class="item">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand1.png" alt="Cadillac" title="Cadillac" class="img-fluid" />
-                                    </div>
+                @foreach($top_brand_chunk as $brand_chunk)
+                    <div class="item">
+                        <div class="row">
+                            @foreach($brand_chunk as $brand)
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
+                                    <a href="{{ route('listing', ['brand[]'=>$brand->id]) }}">
+                                        <div class="card c-brd-light rounded-0 text-center">
+                                            <div class="card-body py-0">
+                                                <img src="{{ $brand->photo }}" alt="{{ $brand->name }}"
+                                                     title="{{ $brand->name }}"
+                                                     class="img-fluid" />
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand2.png" alt="Acura" title="Acura" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand3.png" alt="Chevrolet" title="Chevrolet" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand4.png" alt="Bugatti" title="Bugatti" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand5.png" alt="Mazda" title="Mazda" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand6.png" alt="Bentley" title="Bentley" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand7.png" alt="Lamborghini" title="Lamborghini" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand8.png" alt="Jaguar" title="Jaguar" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand9.png" alt="Porsche" title="Porsche" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand10.png" alt="Audi" title="Audi" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand11.png" alt="Ford" title="Ford" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand12.png" alt="Hyundai" title="Hyundai" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand1.png" alt="Cadillac" title="Cadillac" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand2.png" alt="Acura" title="Acura" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand3.png" alt="Chevrolet" title="Chevrolet" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand4.png" alt="Bugatti" title="Bugatti" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand5.png" alt="Mazda" title="Mazda" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand6.png" alt="Bentley" title="Bentley" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand7.png" alt="Lamborghini" title="Lamborghini" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand8.png" alt="Jaguar" title="Jaguar" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand9.png" alt="Porsche" title="Porsche" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand10.png" alt="Audi" title="Audi" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand11.png" alt="Ford" title="Ford" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand12.png" alt="Hyundai" title="Hyundai" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand1.png" alt="Cadillac" title="Cadillac" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand2.png" alt="Acura" title="Acura" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand3.png" alt="Chevrolet" title="Chevrolet" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand4.png" alt="Bugatti" title="Bugatti" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand5.png" alt="Mazda" title="Mazda" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand6.png" alt="Bentley" title="Bentley" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand7.png" alt="Lamborghini" title="Lamborghini" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand8.png" alt="Jaguar" title="Jaguar" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-xl-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand9.png" alt="Porsche" title="Porsche" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand10.png" alt="Audi" title="Audi" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2 mb-4 mb-sm-0">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand11.png" alt="Ford" title="Ford" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-                            <a href="#">
-                                <div class="card c-brd-light rounded-0 text-center">
-                                    <div class="card-body py-0">
-                                        <img src="images/brand12.png" alt="Hyundai" title="Hyundai" class="img-fluid" />
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -250,115 +250,35 @@
                     <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
                 </div>
             </div>
-            <div class="slider multiple-items2">
-                <div>
-                    <a href="#"><img src="/images/img5.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="#">Aston Martin DB5</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $28,600 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
+            <div class="slider multiple-items">
+                @foreach($related as $relate)
+                    <div class="featured-slider-item">
+                        <div class="card c-brd-light car-box">
+                            <a href="{{ route('single', ['slug'=>$relate->slug]) }}">
+                                <img src="{{ asset($relate->photo ? $relate->photo->photo : 'images/no-photo.png') }}" alt=""
+                                     class="w-100 " /></a>
+                            <div class="card-body">
+                                <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$relate->slug]) }}">{{ $relate->name }}</a></h6>
+                                <ul class="list-unstyled mb-0 c-line-height-2_5">
+                                    <li>
+                                        <h6 class="c-primary mb-0">
+                                            <small class="c-light">Price</small> {{ $relate->price ? 'XAF '.number_format($relate->price) : 'Negotiable' }}
+                                            @if ($relate->old_price)
+                                                <small class="d-inline-block c-primary"><del>XAF {{ number_format($relate->old_price) }}</del></small>
+                                            @endif
+                                        </h6>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
+                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> {{ $relate->make_year }} </a></li>
+                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> {{ number_format($relate->driven) }}</a></li>
+                                <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  {{ ucfirst($relate->fuelType->name) }} </a></li>
+                                <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  {{ ucfirst($relate->transmission) }} </a></li>
                             </ul>
                         </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
                     </div>
-                </div>
-                <div>
-                    <a href="#"><img src="/images/img6.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="#">Chevrolet camaro SS</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $35,800 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="/images/img7.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="#">Land Rover Discovery XXV</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $41,300 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="/images/img5.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="#">Aston Martin DB5</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $28,600 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="/images/img6.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="#">Chevrolet camaro SS</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $35,800 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <a href="#"><img src="/images/img7.jpg" alt="" class="img-fluid rounded-top" /></a>
-                    <div class="card c-brd-light car-box">
-                        <div class="card-body">
-                            <h6 class="mb-2"><a href="#">Land Rover Discovery XXV</a></h6>
-                            <ul class="list-unstyled mb-0 c-line-height-2_5">
-                                <li><h6 class="c-primary mb-0"><small class="c-light">Price</small> $41,300 </h6></li>
-                                <li><i class="fa fa-map-marker pr-1"></i> South City, New York</li>
-                            </ul>
-                        </div>
-                        <ul class="list-inline mb-0 p-3 c-brd-light border border-left-0 border-bottom-0 border-right-0">
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-calendar pr-1"></i> 2015 </a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-clock pr-1"></i> 35,000</a></li>
-                            <li class="list-inline-item mr-3"><a href="#" class="c-light"><i class="flaticon-fuel pr-1"></i>  Petrol </a></li>
-                            <li class="list-inline-item"><a href="#" class="c-light"><i class="flaticon-transport-2 pr-1"></i>  Auto </a></li>
-                        </ul>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

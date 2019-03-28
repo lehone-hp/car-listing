@@ -145,7 +145,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Year</strong></td>
-                                    <td>{{ $vehicle->year ?: 'N/A'}}</td>
+                                    <td>{{ $vehicle->make_year ?: 'N/A'}}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Condition</strong></td>

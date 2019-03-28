@@ -17,7 +17,7 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $brands = Brand::all();
+        $brands = Brand::orderBy('name', 'ASC')->get();
         return view('admin.brand', compact('brands'));
     }
 

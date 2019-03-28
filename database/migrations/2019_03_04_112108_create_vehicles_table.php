@@ -19,7 +19,7 @@ class CreateVehiclesTable extends Migration
             $table->string('name');
             $table->string('model')->nullable();
             $table->text('description');
-            $table->float('price', 20, 2)->nullable();
+            $table->float('price', 20, 2)->default(0);
             $table->float('old_price', 20, 2)->nullable();
             $table->boolean('featured')->default(false);
             $table->string('make_year')->nullable();

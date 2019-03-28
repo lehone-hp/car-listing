@@ -12,14 +12,37 @@ use Illuminate\Support\Str;
 
 class VehicleController extends Controller
 {
+    public $search;
+
+    function __construct() {
+        $this->search = [
+            'q'     => null,
+            'brand'  => null
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $vehicles = Vehicle::orderBy('created_at', 'ASC')->paginate(20);
-        return view('admin.vehicle.index', compact('vehicles'));
+    public function index(Request $request) {
+        $search = $this->search;
+        $vehicles = new Vehicle();
+
+        if ($request->get('q')) {
+            $q = $request->get('q');
+            $vehicles = $vehicles->where('name', 'like', '%'.$q.'%');
+            $search['q'] = $q;
+        }
+
+        if ($request->get('brand')) {
+            $brand = $request->get('brand');
+            $vehicles = $vehicles->where('brand_id', $brand);
+            $search['brand'] = $brand;
+        }
+
+        $vehicles = $vehicles->orderBy('created_at', 'ASC')->paginate(20);
+        return view('admin.vehicle.index', compact('vehicles', 'search'));
     }
 
     /**
@@ -61,7 +84,7 @@ class VehicleController extends Controller
             'color' => 'nullable',
             'driven' => 'numeric|nullable',
             'tank_capacity' => 'numeric|nullable|min:0',
-            'pictures' => 'nullable',
+            'pictures' => 'required',
             'pictures.*' => 'image|max:2048'
         ]);
 

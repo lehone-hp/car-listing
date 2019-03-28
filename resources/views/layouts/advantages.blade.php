@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-                <h3>CarSpot Advantage</h3>
+                <h3>NeatCo Advantage</h3>
                 <p>Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc.</p>
                 <ul class="list-unstyled mb-0 c-line-height-2_5">
                     <li><i class="fa fa-angle-right pr-2"></i> Cum sociis natoque penatibus et magnis parturient montes, nascetur ridiculus.</li>

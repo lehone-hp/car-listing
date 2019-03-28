@@ -1112,6 +1112,10 @@ ul.activity-list > li {
 .bg-warning {
   background-color: #e4cb10; }
 
+.bg-unread {
+ background-color: #fffc5d;
+}
+
 .bg-danger {
   background-color: #F9354C; }
 
