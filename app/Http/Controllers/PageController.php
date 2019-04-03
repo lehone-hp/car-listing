@@ -49,21 +49,20 @@ class PageController extends Controller {
         $search = $this->search;
         $vehicles = new Vehicle();
 
-        if ($request->get('ng')) {
-            $ng = $request->get('ng');
-            $vehicles = $vehicles->where('price', 0);
-            $search['ng'] = $ng;
-        }
-
         if ($request->get('budget')) {
             $budget = explode(',', $request->get('budget'));
             if (count($budget) == 2) {
                 if ($budget[0] == 1 && $budget[1] == 1) {
                     $vehicles = $vehicles->where('price', '>=', 100000000);
                 } else if ($budget[0] == -1 && $budget[1] == -1) {
-                    $vehicles = $vehicles->where('price', 0);
+                    $vehicles = $vehicles->whereNull('price');
                 } else {
-                    $vehicles = $vehicles->orWhereBetween('price', [$budget[0],$budget[1]]);
+                    //if ($budget[0] == 0 || $budget[0] == null) {
+                    //    $vehicles = $vehicles->whereNull('price')
+                    //        ->orWhereBetween('price', [$budget[0],$budget[1]]);
+                    //} else {
+                    $vehicles = $vehicles->whereBetween('price', [$budget[0],$budget[1]]);
+                    //}
                 }
 
                 $search['budget_low'] = $budget[0];
@@ -71,24 +70,29 @@ class PageController extends Controller {
             }
         }
 
-
-        if ($request->get('brand')) {
-            $brands = $request->get('brand');
-            $vehicles = $vehicles->where(function ($query) use ($brands) {
-                foreach ($brands as $index=>$item) {
-                    if ($item != null) {
-                        $query->orWhere('brand_id', $item);
-                    }
+        if ($request->get('driven')) {
+            $driven = explode(',', $request->get('driven'));
+            if (count($driven) == 2) {
+                if ($driven[0] == 1 && $driven[1] == 1) {
+                    $vehicles = $vehicles->where('driven', '>=', $driven[0]);
+                } else {
+                    //if ($driven[0] == 0 || $driven[0] == NULL) {
+                    //    $vehicles = $vehicles->whereBetween('driven', [$driven[0],$driven[1]])
+                    //        ->orWhereNull('driven');
+                    //} else {
+                    $vehicles = $vehicles->whereBetween('driven', [$driven[0],$driven[1]]);
+                    //}
                 }
-            });
-            $search['brand'] = $brands;
+                $search['driven_low'] = $driven[0];
+                $search['driven_high'] = $driven[1];
+            }
         }
 
         if ($request->get('q')) {
             $q = $request->get('q');
             if ($request->get('frmx')) {
                 $frmx = $request->get('frmx');
-                if ($frmx == 2 || $frmx == 3) {
+                if ($frmx >= 2) {
                     $vehicles = $vehicles->where('model', 'like', '%'.$q.'%');
                 } else {
                     $vehicles = $vehicles->where('name', 'like', '%'.$q.'%')
@@ -104,66 +108,101 @@ class PageController extends Controller {
             $search['q'] = $q;
         }
 
-        if ($request->get('color')) {
-            $color = $request->get('color');
-            $vehicles = $vehicles->where('color', $color);
-            $search['color'] = $color;
-        }
 
+        $frmx = $request->get('frmx');
+        if ($frmx == 4) {
+            // brand
+            if ($request->get('brand')) {
+                $brands = $request->get('brand');
+                $vehicles = $vehicles->where('brand_id', $brands);
+                $search['brand'] = [$brands];
+            }
 
-        if ($request->get('year')) {
-            $years = $request->get('year');
-            $vehicles = $vehicles->where(function ($query) use ($years) {
-                foreach ($years as $index=>$item) {
-                    if ($item != null) {
-                        if ($item == 1) {
-                            $query->orWhere('make_year', '<=', Carbon::now()->year-19);
-                        } else {
-                            $query->orWhere('make_year', $item);
+            // year
+            if ($request->get('year')) {
+                $years = $request->get('year');
+                if ($years == 1) {
+                    $vehicles = $vehicles->where('make_year', '<=', Carbon::now()->year - 19);
+                } else {
+                    $vehicles = $vehicles->where('make_year', $years);
+                }
+                $search['year'] = [$years];
+            }
+
+            // fuel
+            if ($request->get('fuel')) {
+                $fuels = $request->get('fuel');
+                $vehicles = $vehicles->where('fuel_type_id', $fuels);
+                $search['fuel'] = [$fuels];
+            }
+
+            // transmission
+            if ($request->get('transmission')) {
+                $transmission = $request->get('transmission');
+                $vehicles = $vehicles->where('transmission', $transmission);
+                $search['transmission'] = [$transmission];
+            }
+
+            // color
+            if ($request->get('color')) {
+                $color = $request->get('color');
+                $vehicles = $vehicles->where('color', $color);
+                $search['color'] = $color;
+            }
+        } else {
+
+            if ($request->get('brand')) {
+                $brands = $request->get('brand');
+                $vehicles = $vehicles->where(function ($query) use ($brands) {
+                    foreach ($brands as $index=>$item) {
+                        if ($item != null) {
+                            $query->orWhere('brand_id', $item);
                         }
                     }
-                }
-            });
-            $search['year'] = $years;
-        }
+                });
+                $search['brand'] = $brands;
+            }
 
-        if ($request->get('driven')) {
-            $driven = explode(',', $request->get('driven'));
-            if (count($driven) == 2) {
-                if ($driven[0] == 1 && $driven[1] == 1) {
-                    $vehicles = $vehicles->where('driven', '>=', $driven[0]);
-                } else {
-                    $vehicles = $vehicles->whereBetween('driven', [$driven[0],$driven[1]]);
-                }
-                $search['driven_low'] = $driven[0];
-                $search['driven_high'] = $driven[1];
+            if ($request->get('year')) {
+                $years = $request->get('year');
+                $vehicles = $vehicles->where(function ($query) use ($years) {
+                    foreach ($years as $index=>$item) {
+                        if ($item != null) {
+                            if ($item == 1) {
+                                $query->orWhere('make_year', '<=', Carbon::now()->year-19);
+                            } else {
+                                $query->orWhere('make_year', $item);
+                            }
+                        }
+                    }
+                });
+                $search['year'] = $years;
+            }
+
+            if ($request->get('fuel')) {
+                $fuels = $request->get('fuel');
+                $vehicles = $vehicles->where(function ($query) use ($fuels) {
+                    foreach ($fuels as $index=>$item) {
+                        if ($item != null) {
+                            $query->orWhere('fuel_type_id', $item);
+                        }
+                    }
+                });
+                $search['fuel'] = $fuels;
+            }
+
+            if ($request->get('transmission')) {
+                $transmissions = $request->get('transmission');
+                $vehicles = $vehicles->where(function ($query) use ($transmissions) {
+                    foreach ($transmissions as $index=>$item) {
+                        if ($item != null) {
+                            $query->orWhere('transmission', $item);
+                        }
+                    }
+                });
+                $search['transmission'] = $transmissions;
             }
         }
-
-        if ($request->get('fuel')) {
-            $fuels = $request->get('fuel');
-            $vehicles = $vehicles->where(function ($query) use ($fuels) {
-                foreach ($fuels as $index=>$item) {
-                    if ($item != null) {
-                        $query->orWhere('fuel_type_id', $item);
-                    }
-                }
-            });
-            $search['fuel'] = $fuels;
-        }
-
-        if ($request->get('transmission')) {
-            $transmissions = $request->get('transmission');
-            $vehicles = $vehicles->where(function ($query) use ($transmissions) {
-                foreach ($transmissions as $index=>$item) {
-                    if ($item != null) {
-                        $query->orWhere('transmission', $item);
-                    }
-                }
-            });
-            $search['transmission'] = $transmissions;
-        }
-
         $vehicles = $vehicles->orderBy('created_at', 'DESC')->paginate(16);
         $colors = config('constants.colors');
 

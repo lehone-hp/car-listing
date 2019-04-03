@@ -64,7 +64,7 @@
                                     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
                                         <label class="c-dark">Brand</label>
                                         <div class="form-group">
-                                            <select class="form-control rounded" name="brand[]">
+                                            <select class="form-control rounded" name="brand">
                                                 <option value="">Select Brand</option>
                                                 @foreach(\App\Brand::all() as $brand)
                                                     <option value="{{ $brand->id }}" {{ in_array($brand->id, $search['brand']) ? 'selected' : '' }}>
@@ -83,7 +83,7 @@
                                     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
                                         <label class="c-dark">Make Year</label>
                                         <div class="form-group">
-                                            <select class="form-control rounded" name="year[]">
+                                            <select class="form-control rounded" name="year">
                                                 <option value="">Select Make Year</option>
                                                 @for ($i = 0; $i < 20; $i++)
                                                     <option value="{{ \Carbon\Carbon::now()->year - $i }}" {{ in_array(\Carbon\Carbon::now()->year-$i, $search['year']) ? 'selected' : '' }}>
@@ -96,7 +96,7 @@
                                     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
                                         <label class="c-dark">Kilometers Driven</label>
                                         <div class="form-group">
-                                            <select class="form-control rounded">
+                                            <select class="form-control rounded" name="driven">
                                                 <option value="">Select Distance Driven</option>
                                                 @for($i=0; $i <= 90000; $i+=10000)
                                                     <option value="{{$i}},{{$i+10000}}" {{ $search['driven_low'] >= $i && $search['driven_high'] <= $i+10000 ? 'selected' : '' }}>
@@ -109,7 +109,7 @@
                                     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
                                         <label class="c-dark">Fuel Type</label>
                                         <div class="form-group">
-                                            <select class="form-control rounded" name="fuel[]">
+                                            <select class="form-control rounded" name="fuel">
                                                 <option value="">Select Fuel Type</option>
                                                 @foreach(\App\FuelType::all() as $fuel)
                                                     <option value="{{ $fuel->id }}" {{ in_array($fuel->id, $search['fuel']) ? 'selected' : '' }}>
@@ -121,7 +121,7 @@
                                     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
                                         <div class="form-group mb-0">
                                             <label class="c-dark">Transmission</label>
-                                            <select class="form-control rounded" name="transmission[]">
+                                            <select class="form-control rounded" name="transmission">
                                                 <option value="">Select Transmission</option>
                                                 <option value="automatic" {{ in_array('automatic', $search['transmission']) ? 'selected' : '' }}>Automatic</option>
                                                 <option value="manual" {{ in_array('manual', $search['transmission']) ? 'selected' : '' }}>Manual</option>
@@ -139,7 +139,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="frmx" value="3">
+                                    <input type="hidden" name="frmx" value="4">
 
                                     <div class="col-12 col-md-4 col-xl-2">
                                         <label class="mb-4"></label>
@@ -167,14 +167,15 @@
                                     <div class="card-body py-4 bg-white">
                                         <div class="mt-3 budget">
                                             <input id="sl2" data-ui-slider="" type="text" value="" name="budget"
-                                                   data-slider-min="500000" data-slider-max="100000000"
-                                                   data-slider-value="[{{ $search['budget_low'] ?: '500000' }},{{ $search['budget_high'] ?: '100000000' }}]" class="slider">
+                                                   data-slider-min="0" data-slider-max="100000000"
+                                                   data-slider-value="[{{ $search['budget_low'] ?: '0' }},{{ $search['budget_high'] ?: '100000000' }}]" class="slider">
                                         </div>
-                                        <div class="mt-3">
+                                        {{--<div class="mt-3">
                                             <input type="checkbox" name="ng" {{ $search['ng'] ? 'checked' : ''}}
                                                     id="negotiable">
                                             <label for="negotiable" class="mb-0">Negotiable</label>
                                         </div>
+                                        --}}
                                     </div>
                                 </div>
                             </div>
