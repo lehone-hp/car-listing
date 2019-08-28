@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\VehicleContact;
 
 class AdminController extends Controller {
 
@@ -18,7 +19,8 @@ class AdminController extends Controller {
     }
 
     public function getDashboard() {
-        return view('admin.dashboard');
+        $contacts = VehicleContact::orderBy('created_at', 'DESC')->paginate(5);
+        return view('admin.dashboard', compact('contacts'));
     }
 
 }

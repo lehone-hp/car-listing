@@ -8,7 +8,9 @@ use App\Vehicle;
 use App\VehiclePhoto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class VehicleController extends Controller
 {
@@ -127,13 +129,14 @@ class VehicleController extends Controller
         if ($request->has('pictures')) {
             $index = 0;
             foreach ($request->file('pictures') as $picture) {
-                $path = $picture->storeAs('vehicles',
-                    'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension(),
-                    'public_uploads');
+                $name = 'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension();
+                $img = Image::make($picture->getRealPath());
+                $img->resize(900, 600);
+                $img->save(public_path('/uploads/vehicles/'.$name));
 
                 $vehicle_photo = new VehiclePhoto();
                 $vehicle_photo->vehicle_id = $vehicle->id;
-                $vehicle_photo->photo = 'uploads/'. $path;
+                $vehicle_photo->photo = 'uploads/vehicles/'.$name;
                 $vehicle_photo->save();
 
                 if ($index === 0) {
@@ -279,6 +282,11 @@ class VehicleController extends Controller
             $vehicle->save();
         }
 
+        $image_path = $photo->photo;
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
         $photo->delete();
         session()->flash('success', 'Photo has been deleted successfully');
         return redirect()->back();
@@ -297,13 +305,14 @@ class VehicleController extends Controller
 
         $index = 0;
         foreach ($request->file('pictures') as $picture) {
-            $path = $picture->storeAs('vehicles',
-                'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension(),
-                'public_uploads');
+            $name = 'vehicle_'. uniqid() .'_'. time() .'.'.$picture->getClientOriginalExtension();
+            $img = Image::make($picture->getRealPath());
+            $img->resize(900, 600);
+            $img->save(public_path('/uploads/vehicles/'.$name));
 
             $vehicle_photo = new VehiclePhoto();
             $vehicle_photo->vehicle_id = $vehicle->id;
-            $vehicle_photo->photo = 'uploads/'.$path;
+            $vehicle_photo->photo = 'uploads/vehicles/'.$name;
             $vehicle_photo->save();
 
             if ($index === 0 && $vehicle->vehicle_photo_id == null) {

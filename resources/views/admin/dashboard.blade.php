@@ -6,159 +6,107 @@
     <div class="panel panel-headline">
         <div class="panel-heading">
             <h3 class="panel-title">Admin Dashboard</h3>
-            <p class="panel-subtitle">TBD</p>
+            <p class="panel-subtitle">General Overview</p>
         </div>
-        {{--
+
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-download"></i></span>
+                        <span class="icon"><i class="fa fa-cab"></i></span>
                         <p>
-                            <span class="number">1,252</span>
-                            <span class="title">Downloads</span>
+                            <span class="number">{{ number_format(count(\App\Vehicle::get())) }}</span>
+                            <span class="title">Vehicles</span>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-shopping-bag"></i></span>
+                        <span class="icon"><i class="fa fa-inbox"></i></span>
                         <p>
-                            <span class="number">203</span>
-                            <span class="title">Sales</span>
+                            <span class="number">{{ number_format(count(\App\VehicleContact::get())) }}</span>
+                            <span class="title">Contacts</span>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-eye"></i></span>
+                        <span class="icon"><i class="fa fa-tags"></i></span>
                         <p>
-                            <span class="number">274,678</span>
-                            <span class="title">Visits</span>
+                            <span class="number">{{ number_format(count(\App\Brand::get())) }}</span>
+                            <span class="title">Brands</span>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                        <span class="icon"><i class="fa fa-list"></i></span>
                         <p>
-                            <span class="number">35%</span>
-                            <span class="title">Conversions</span>
+                            <span class="number">{{ number_format(count(\App\Feature::get())) }}</span>
+                            <span class="title">Car Features</span>
                         </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-9">
-                    <div id="headline-chart" class="ct-chart"></div>
-                </div>
-                <div class="col-md-3">
-                    <div class="weekly-summary text-right">
-                        <span class="number">2,315</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
-                        <span class="info-label">Total Sales</span>
-                    </div>
-                    <div class="weekly-summary text-right">
-                        <span class="number">$5,758</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
-                        <span class="info-label">Monthly Income</span>
-                    </div>
-                    <div class="weekly-summary text-right">
-                        <span class="number">$65,938</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
-                        <span class="info-label">Total Income</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    --}}
     <!-- END OVERVIEW -->
-    {{--
+
+
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <!-- RECENT PURCHASES -->
             <div class="panel">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Recent Purchases</h3>
+                    <h3 class="panel-title">Recent Contacts from Clients</h3>
                     <div class="right">
                         <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-                        <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
                     </div>
                 </div>
                 <div class="panel-body no-padding">
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Order No.</th>
                             <th>Name</th>
-                            <th>Amount</th>
-                            <th>Date &amp; Time</th>
-                            <th>Status</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th>Vehicle</th>
+                            <th>Date</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><a href="#">763648</a></td>
-                            <td>Steve</td>
-                            <td>$122</td>
-                            <td>Oct 21, 2016</td>
-                            <td><span class="label label-success">COMPLETED</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">763649</a></td>
-                            <td>Amber</td>
-                            <td>$62</td>
-                            <td>Oct 21, 2016</td>
-                            <td><span class="label label-warning">PENDING</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">763650</a></td>
-                            <td>Michael</td>
-                            <td>$34</td>
-                            <td>Oct 18, 2016</td>
-                            <td><span class="label label-danger">FAILED</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">763651</a></td>
-                            <td>Roger</td>
-                            <td>$186</td>
-                            <td>Oct 17, 2016</td>
-                            <td><span class="label label-success">SUCCESS</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">763652</a></td>
-                            <td>Smith</td>
-                            <td>$362</td>
-                            <td>Oct 16, 2016</td>
-                            <td><span class="label label-success">SUCCESS</span></td>
-                        </tr>
+                        @if (count($contacts) > 0)
+                            @foreach($contacts as $contact)
+                                <tr class="{{ $contact->status == 'unread' ? 'bg-unread' : '' }}">
+                                    <td><a href="{{ route('admin.contact.show', ['id'=>$contact->id]) }}">{{ $contact->name }}</a></td>
+                                    <td>{{ $contact->email }}</td>
+                                    <td>{{ $contact->phone }}</td>
+                                    <td>{{ \Illuminate\Support\Str::limit($contact->message, 120, ('...')) }}</td>
+                                    <td><a href="{{ route('admin.vehicles.show', ['id'=>$contact->vehicle->slug]) }}" target="_blank">{{ $contact->vehicle->name }}</a></td>
+                                    <td>{{ date('j/m/y, g:i A', strtotime($contact->created_at)) }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6" class="text-center">No Messages</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
-                        <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Purchases</a></div>
+                        <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 5 messages</span></div>
+                        <div class="col-md-6 text-right"><a href="{{ route('admin.contact.index') }}" class="btn btn-primary">View All Messages</a></div>
                     </div>
                 </div>
             </div>
             <!-- END RECENT PURCHASES -->
         </div>
-        <div class="col-md-6">
-            <!-- MULTI CHARTS -->
-            <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Projection vs. Realization</h3>
-                    <div class="right">
-                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-                        <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div id="visits-trends-chart" class="ct-chart"></div>
-                </div>
-            </div>
-            <!-- END MULTI CHARTS -->
-        </div>
     </div>
+
+    {{--
     <div class="row">
         <div class="col-md-7">
             <!-- TODO LIST -->
@@ -356,5 +304,5 @@
             <!-- END REALTIME CHART -->
         </div>
     </div>
-    --}}
+--}}
 @endsection

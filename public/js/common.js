@@ -30,7 +30,7 @@ $('input,textarea').focus(function(){
         paginationSpeed: 900,
         items: 1,
         singleItem: true,
-        autoPlay: false
+        autoPlay: true
     });
 
     // Owl Client Js
@@ -40,7 +40,7 @@ $('input,textarea').focus(function(){
         paginationSpeed: 900,
         items: 1,
         pagination: true,
-        autoPlay: false,
+        autoPlay: true,
         itemsDesktop: [1199, 1],
         itemsDesktopSmall: [979, 1],
         itemsTablet: [768, 1],
@@ -52,6 +52,7 @@ $('input,textarea').focus(function(){
         arrows: true,
         slidesToShow: 4,
         slidesToScroll: 4,
+        autoplay: true,
         lazyLoad: 'ondemand',
         responsive: [
             {
@@ -84,8 +85,9 @@ $('input,textarea').focus(function(){
     $('.multiple-items2').slick({
         infinite: true,
         arrows: true,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
+        autoplay: true,
         lazyLoad: 'ondemand',
         responsive: [
             {
@@ -111,6 +113,7 @@ $('input,textarea').focus(function(){
         arrows: true,
         slidesToShow: 4,
         slidesToScroll: 4,
+        autoplay: true,
         lazyLoad: 'ondemand',
         responsive: [
             {
@@ -153,7 +156,7 @@ $('input,textarea').focus(function(){
         slidesToShow: 2,
         dots: true,
         arrows: false,
-        autoplay: false,
+        autoplay: true,
         responsive: [
             {
                 breakpoint: 1200,
@@ -180,6 +183,7 @@ $('input,textarea').focus(function(){
         dots: true,
         centerPadding: '0px',
         arrows: false,
+        autoplay: true,
         slidesToShow: 3,
         responsive: [
             {

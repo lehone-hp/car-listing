@@ -111,7 +111,7 @@
                             <div>
                                 <div class="card c-brd-light car-box default-slider-item">
                                     <a href="{{ route('single', ['slug'=>$car->slug]) }}">
-                                        <img src="{{ asset($car->photo->photo) }}" alt="" class="w-100  img-fluid rounded-top" /></a>
+                                        <img src="{{ asset($car->photo ? $car->photo->photo : 'images/no-photo.png') }}" alt="" class="w-100  img-fluid rounded-top" /></a>
                                     <div class="card-body">
                                         <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
                                         <small>
@@ -152,7 +152,7 @@
                     <div>
                         <div class="card c-brd-light car-box featured-slider-item">
                             <a href="{{ route('single', ['slug'=>$car->slug]) }}">
-                                <img src="{{ asset($car->photo->photo) }}" alt="" class="w-100 img-fluid rounded-top" /></a>
+                                <img src="{{ asset($car->photo ? $car->photo->photo : 'images/no-photo.png') }}" alt="" class="w-100 img-fluid rounded-top" /></a>
                             <div class="card-body">
                                 <h6 class="mb-2"><a href="{{ route('single', ['slug'=>$car->slug]) }}">{{ $car->name }}</a></h6>
                                 <ul class="list-unstyled mb-0 c-line-height-2_5">
